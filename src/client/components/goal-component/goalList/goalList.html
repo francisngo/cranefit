@@ -1,13 +1,10 @@
 <h2> in Goal List !!!! </h2>
 
-
  <ul >
-    <li> </li>
-    <li ng-repeat="goal in $ctrl.resolveGoalList">
+    <li ng-repeat="goal in $ctrl.resolveGoalList.data[0]">
       <a ui-sref="goal({goalID:goal.id})">
       {{goal.name}}
       </a>
     </li>
   </ul>
-
   <ui-view></ui-view>
