@@ -1,3 +1,4 @@
-cython
-pystan
+Cython>=0.22
+pystan>=2.14
+numpy>=1.10.0
 fbprophet
