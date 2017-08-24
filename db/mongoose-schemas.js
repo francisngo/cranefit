@@ -2,12 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
 require('dotenv').config({ silent: true });
-const mongoServer = process.env.MONGO_SERVER;
-const mongoUsername = process.env.MONGO_USERNAME;
-const mongoPassword = process.env.MONGO_PASSWORD
-const mongodbURI = `mongodb://${mongoUsername}:${mongoPassword}@${mongoServer}`
 
-mongoose.connect(mongodbURI, { useMongoClient: true });
+mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 // Error Handling
 const db = mongoose.connection;
