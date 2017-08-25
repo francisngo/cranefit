@@ -11,7 +11,7 @@ angular // add module dependencies and configure it
         });
       })
       .catch(console.error);
-      
+
     $stateProvider
       .state('home', {
         url:'/home',
@@ -60,8 +60,8 @@ angular // add module dependencies and configure it
         component: 'goals',
         resolve : {
           resolveGoal : function (goalService) {
-            var goals=goalService.getAllGoals();
-            //console.log( goals);
+            var goals = goalService.getAllGoals();
+            //console.log(goals);
             return goals;
           }
         }

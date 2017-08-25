@@ -4,7 +4,7 @@ angular.module('sparrowFit')
 .service('goalService',function($http){
 
   this.getAllGoals= function (){
-    var allGoals=$http.get('/api/get/goals');
+    var allGoals = $http.get('/api/goals');
     console.log('allGoals in goalService',allGoals);
    return allGoals;
   }
@@ -18,7 +18,7 @@ angular.module('sparrowFit')
     //   return goalMatchesParam(goal)
     // }).join('');
 
-    var requestedGoal= this.getAllGoals()
+    var requestedGoal = this.getAllGoals()
     .find(goalMatchesParam)
 
     return requestedGoal
@@ -26,7 +26,7 @@ angular.module('sparrowFit')
 
   this.addGoal=function(newGoal,callBack){
     // call end point here
-    $http.post('/post/goals',newGoal);
+    $http.post('/api/goals',newGoal);
     callBack(newGoal);
   };
 })
