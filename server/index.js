@@ -6,6 +6,12 @@ const app = express();
 const logger = require('morgan');
 const cors = require('cors'); // allow cors headers
 const jwt = require('express-jwt');
+const jwtSecret = require('jwks-rsa').expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://thecranebaes.auth0.com/.well-known/jwks.json`
+  });
 // allows you to use .env file
 require('dotenv').config({ silent: true });
 
@@ -32,18 +38,22 @@ app.use(express.static(path.join(__dirname, '../src')));
 // app.use('/application', express.static(path.join(__dirname, '../client')));
 
 app.get('/api/application', (req, res) => {
+  console.log(req.headers);
+  res.end('whatevs'); 
 });
 
 //HANDLE GET REQUESTS
-const authCheck = jwt({ secret: process.env.SECRET, audience: process.env.AUDIENCE, credentialsRequired: true });
+const authCheck = jwt({ secret: jwtSecret, credentialsRequired: true });
 // SET UP A PUBLIC AND PRIVATE ENDPOINT
 app.get('/api/public', (req, res) => {
+  
   res.json({ message: "Hello from a public endpoint! You don't need to be authenticated to see this." })
 });
 
 // to protect this endpoint pass our middleware as second arg
 // will require an auth header to be present for user to go through to this endpoint
 app.get('/api/private', authCheck, (req, res) => {
+  console.log(req.user);
   res.json({ message: "Hello from a private endpoint! You DO need to be authenticated to see this." })
 });
 
