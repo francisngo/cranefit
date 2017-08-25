@@ -1,11 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const path = require('path');
-const { User, Template, History, Goal } = require('../db/mongoose-schemas.js');
+const { User, Template, History, Goal } = require('./db');
 const app = express();
 const logger = require('morgan');
 const cors = require('cors'); // allow cors headers
 const jwt = require('express-jwt');
+const api = require('./api');
 const jwtSecret = require('jwks-rsa').expressJwtSecret({
     cache: true,
     rateLimit: true,
@@ -57,30 +58,21 @@ app.get('/api/private', authCheck, (req, res) => {
 app.use(authCheck);
 
 /*
- *  API endpoints
+ *  Set API endpoints
  */
 
 // POST request handlers
+app.post('/api/users', api.post.users);
+app.post('/api/workout', api.post.workout);
+app.post('/api/goals', api.post.goals);
+app.post('/api/histories', api.post.histories);
 
-app.post('/api/users', function(req, res) {
-  User.create(req.body);
-  res.send('Posted User');
-});
+// GET request handlers
 
-app.post('/api/workout', function(req, res) {
-  Template.create(req.body);
-  res.send('Posted Template');
-});
+app.get('/api/workout/', api.get.workout);
+app.get('/api/histories/', api.get.histories);
+app.get('/api/goals/', api.get.goals);
 
-app.post('/api/goals', function(req, res) {
-  Goal.create(req.body);
-  res.send('Posted Goal');
-});
-
-app.post('/api/histories', function(req, res) {
-  History.create(req.body);
-  res.send('Posted History');
-});
 
 //GET USER BY USER_ID
 app.get('/api/users/:id', function(req, res) {
@@ -92,43 +84,5 @@ app.get('/api/users/:id', function(req, res) {
   })
   .then(function() {
     res.send(user);
-  });
-});
-
-// GET request handlers
-
-app.get('/api/workout/', function(req, res) {
-  const templates = [];
-
-  Template.find({user_id: req.user.sub}, function(err, template) {
-    if (err) console.log(err);
-    else templates.push(template);
-  })
-  .then(function() {
-    res.send(templates);
-  });
-});
-
-app.get('/api/histories/', function(req, res) {
-  const histories = [];
-
-  History.find({user_id: req.user.sub}, function(err, history) {
-    if (err) console.log(err);
-    else histories.push(history);
-  })
-  .then(function() {
-    res.send(histories);
-  });
-});
-
-app.get('/api/goals/', function(req, res) {
-  var goals = [];
-
-  Goal.find({user_id: req.user.sub}, function(err, goal) {
-    if (err) console.log(err);
-    else goals.push(goal);
-  })
-  .then(function() {
-    res.send(goals);
   });
 });
