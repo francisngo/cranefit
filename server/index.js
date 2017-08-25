@@ -31,7 +31,6 @@ app.get('/config', (req, res) => {
   }
   res.send(data)
 })
-// app.use('/',express.static(path.join(__dirname, '../client')));
 
 // AUTH0
 app.use(express.static(path.join(__dirname, '../src')));
@@ -43,7 +42,7 @@ app.get('/api/application', (req, res) => {
 });
 
 //HANDLE GET REQUESTS
-const authCheck = jwt({ secret: jwtSecret, credentialsRequired: true });
+const authCheck = jwt({ secret: jwtSecret, audience: process.env.AUDIENCE, credentialsRequired: true });
 // SET UP A PUBLIC AND PRIVATE ENDPOINT
 app.get('/api/public', (req, res) => {
   
