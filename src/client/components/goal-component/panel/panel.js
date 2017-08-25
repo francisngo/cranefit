@@ -1,5 +1,5 @@
 angular.module('sparrowFit')
-  .controller('panelCtrl', function(goalService) {
+  .controller('panelCtrl', function() {
   })
   .component('panel', {
     bindings : { resolvePanel :'<'},
