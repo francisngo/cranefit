@@ -1,12 +1,10 @@
-<h1> All Your active Goals ! </h1>
-
-<!-- <a href="lend.html"> Lend a cat </a>
- -->
- <a ui-sref="panel"> Your panel activity</a>
- <a ui-sref="addGoal"> Add a goal  </a>
- <a ui-sref="goalList"> See all my goals </a>
- <a ui-sref="history"> See all my workouts</a>
-    <ui-view></ui-view>
+<div class="container">
+  <button class="btn btn-default" type="button" ui-sref="addGoal"> Add Goal </button>
+  <!-- <button class="btn btn-default" type="button" ui-sref="panel"> Your panel activity</button> -->
+  <button class="btn btn-default" type="button" ui-sref="goalList"> Show My Progress </button>
+  <!-- <button class="btn btn-default" type="button" ui-sref="history"> See all my workouts</button> -->
+  <ui-view></ui-view>
+</div>
 
 <!--  <ul >
     <li> <h5> hereafter should be my ng-repeat result </h5></li>
@@ -16,4 +14,3 @@
       </a>
     </li>
   </ul> -->
-
