@@ -23,11 +23,6 @@ angular // add module dependencies and configure it
         templateUrl: 'login/profile/profile-tpl.html',
         controller: 'profileController as user'
       })
-      .state('application', {
-        url: '/application',
-        templateUrl: 'login/application/application-tpl.html',
-        controller: 'applicationController'
-      })
       .state('design', {
         url: '/design',
         templateUrl: 'login/design-sandbox/design-sandbox.html',
