@@ -68,21 +68,6 @@ app.post('/api/goals', api.post.goals);
 app.post('/api/histories', api.post.histories);
 
 // GET request handlers
-
 app.get('/api/workout/', api.get.workout);
 app.get('/api/histories/', api.get.histories);
 app.get('/api/goals/', api.get.goals);
-
-
-//GET USER BY USER_ID
-app.get('/api/users/:id', function(req, res) {
-  var ident = req.params.id;
-  var user = null;
-  User.find({id: ident }, function(err, target) {
-    if (err) console.log(err);
-    user = target;
-  })
-  .then(function() {
-    res.send(user);
-  });
-});

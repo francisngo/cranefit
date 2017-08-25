@@ -27,9 +27,8 @@ exports.post = {
 // GET request handlers
 exports.get = {
   users: function(req, res) {
-    var ident = req.params.id;
     var user = null;
-    User.find({id: ident }, function(err, target) {
+    User.find({id: req.user.sub }, function(err, target) {
       if (err) console.log(err);
       user = target;
     })
