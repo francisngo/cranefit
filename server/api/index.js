@@ -7,26 +7,26 @@ const { User, Template, History, Goal } = require('../db');
 // API request helper function
 const sendResults = function sendResults(resultsPromise, res) {
   resultsPromise
-    .then(results => res.json(results))
-    .catch((err) => {
+    .catch(results => {
       res.statusCode = 500;
       res.end('DB error');
-    });
+    })
+    .then(results => res.json(results));
 };
 
 // POST request handlers
 exports.post = {
   users: function(req, res) {
-    sendResults(User.create(Object.assign({}, req.body, { user_id: req.user.sub }), res));
+    sendResults(User.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   },
   workout: function(req, res) {
-    sendResults(Template.create(Object.assign({}, req.body, { user_id: req.user.sub }), res));
+    sendResults(Template.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   },
   goals: function(req, res) {
-    sendResults(Goal.create(Object.assign({}, req.body, { user_id: req.user.sub }), res));
+    sendResults(Goal.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   },
   histories: function(req, res) {
-    sendResults(History.create(Object.assign({}, req.body, { user_id: req.user.sub }), res));
+    sendResults(History.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   }
 };
 
