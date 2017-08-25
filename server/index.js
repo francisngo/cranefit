@@ -56,6 +56,8 @@ app.get('/api/private', authCheck, (req, res) => {
   res.json({ message: "Hello from a private endpoint! You DO need to be authenticated to see this." })
 });
 
+// Prevent unauthorised access to API endpoints
+app.use(authCheck);
 
 app.get('/api/users', function(req, res) {
   var users = [];
