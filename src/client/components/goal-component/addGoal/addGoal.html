@@ -1,11 +1,47 @@
-<h3>add a goal below </h3>
+<div class="row" style="padding-top: 15px; margin: 10px auto;">
+  <div class="col-lg-4 mb-4 form">
+    <form>
+      <div class="form-group">
+        <label>Select Your Workout</label>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownWorkout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Select Your Workout...
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownWorkout">
+            <li><a href="#">FILL_ME_IN</a></li>
+            <li><a href="#">FILL_ME_IN</a></li>
+            <li><a href="#">FILL_ME_IN</a></li>
+            <li><a href="#">FILL_ME_IN</a></li>
+            <li><a href="#">FILL_ME_IN</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Enter Your Goal Number</label>
+        <input type="text" class="form-control" placeholder="Enter a Number" />
+      </div>
+      <div class="form-group">
+        <label>Enter Start of Goal Date</label>
+        <input type="date" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>Enter End of Goal Date</label>
+        <input type="date" class="form-control"/>
+      </div>
+      <button type="submit" class="btn btn-default">Submit Goal</button>
+    </form>
+  </div>
+</div>
+
+<!--
 <div>
    <form  id="form1">
 
             enter goal name: <input ng-model="$ctrl.name"><br>
             What is you Goal time frame :
             <select name="timeframe" id="timeFrameSelect" ng-model="$ctrl.timeframe">
-             <option value="">---Please select time frame---</option> <!-- not selected / blank option -->
+             <option value="">Please select time frame</option>
              <option value="day">day</option>
              <option value="week">week</option>
              <option value="month">month</option>
@@ -13,7 +49,7 @@
             </select> <br>
             How often do you aim to workout within each time frame ? :
             <select name="number" id="numberSelect" ng-model="$ctrl.number">
-             <option value="">---Please select a number---</option>
+             <option value="">Please select a number</option>
              <option value="1">1</option>
              <option value="2">2</option>
              <option value="3">3</option>
@@ -30,14 +66,12 @@
             </select> <br>
             Do you want email alerts on how you re performing in regards to this goal ? :
             <select name="hasEmailAlert" id="hasEmailAlertSelect" ng-model="$ctrl.hasEmailAlert">
-            <option value="">---set your email preference---</option>
+            <option value="">set your email preferencer</option>
              <option value="true">yes</option>
              <option value="false">no</option>
             </select> <br>
 
 
-            <button ng-click="$ctrl.insertGoal()"> create goal </button>
+            <button ng-click="$ctrl.insertGoal()"> create goal </button> -->
        <!--      <input ng-click="insertPlayer()" value="submit"> -->
-   </form>
-
-</div>
+   <!-- </form> -->

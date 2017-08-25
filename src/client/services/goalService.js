@@ -10,6 +10,7 @@ angular.module('sparrowFit')
       function goalMatchesParam(goal){
         return goal.id === Number(goalID);
       }
+      
       // var requestedGoal= this.getAllGoals()
       // .filter(function(goal){
       //   return goalMatchesParam(goal)
