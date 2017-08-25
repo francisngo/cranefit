@@ -71,3 +71,4 @@ app.post('/api/histories', api.post.histories);
 app.get('/api/workout/', api.get.workout);
 app.get('/api/histories/', api.get.histories);
 app.get('/api/goals/', api.get.goals);
+app.get('/api/users/', api.get.users);
