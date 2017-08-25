@@ -1,20 +1,15 @@
 <div class="container">
   <div class="col-md-8">
-  </br>
-  </br>
- <h3>Add Exercise</h3>
-  <div class="form-group">
-    <label>Exercise</label>
-    <input type="text" class="form-control" ng-model="$ctrl.name" placeholder="Running"/>
-    <label>Unit name</label>
-    <input type="text" class="form-control" ng-model="$ctrl.unitName" placeholder="km" />
-    <label>Unit default value</label>
-    <input type="text" class="form-control" ng-model="$ctrl.unitValue" placeholder="5" />
+    <h1 class="page-header">Add Exercise</h1>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" ng-model="$ctrl.name" placeholder="Running"/>
+      <label>Default Value</label>
+      <input type="text" class="form-control" ng-model="$ctrl.unitValue" placeholder="2" />
+      <label>Unit</label>
+      <input type="text" class="form-control" ng-model="$ctrl.unitName" placeholder="km/mi" />
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="$ctrl.addWorkout()">Add Exercise</button>
   </div>
-<br/>
-<button type="button" class="btn btn-info" ng-click="$ctrl.addWorkout()">Add Exercise</button>
-<br/>
-<br/>
-</div>
   <ui-view></ui-view>
 </div>
