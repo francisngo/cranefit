@@ -1,35 +1,19 @@
 angular.module('sparrowFit')
 .controller('UnTimedCtrl', function(httpService,  store) {
 
-  //data is the information send when a template is added.
+  // object to store data to be sent to sever
   this.data= {};
-
-  this.userId = store.get('profile')['user_id'];
-
-  //workout contain template created by user.
-  this.workout = [];
 
   //addWorkout() create a template of named workout
   this.addWorkout = function() {
-    var obj = {};
-    obj.activity = this.activity;
-    obj.duration = '';
-    obj.sets = this.sets;
-    obj.reps = this.reps;
-    this.workout.push(obj);
-  };
+    this.data.name = this.name;
+    this.data.unitName = this.unitName;
+    this.data.unitValue = this.unitValue;
 
-  this.addTemplate = function() {
-    this.createData();
-    httpService.sendData('/api/workout', this.data);
-    console.log('Send present workout to the database via http services',this.data);
-  };
+    console.log('object to be sent to server: ', this.data);
 
-  this.createData  = function() {
-    this.data.user_id = this.userId;
-    this.data.workout = this.workout;
-    this.data.templateName = this.templateName;
-    this.data.timed = false;
+    // TODO: make POST request to server
+    // httpService.sendData('/api/workout', this.data);
   };
 })
 .component('untimed', {
