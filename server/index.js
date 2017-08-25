@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const path = require('path');
-const { User, Template, History, Goal } = require('../db/mongoose-schemas.js');
+const { User, Template, History, Goal } = require('./db');
 const app = express();
 const logger = require('morgan');
 const cors = require('cors'); // allow cors headers

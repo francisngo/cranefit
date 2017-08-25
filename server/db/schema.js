@@ -1,7 +1,7 @@
 require('dotenv').config({ silent: true });
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-mongoose.Promise = require('bluebird');
+mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 // Error Handling
