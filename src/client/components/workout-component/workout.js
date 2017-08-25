@@ -18,7 +18,7 @@ angular.module('sparrowFit')
   };
 
   httpService.getData(this.url, (returnValue) => {
-    this.userData = returnValue[0];
+    this.userData = returnValue;
 
     this.myTimedTemplates = this.userData
     .filter((a) => {

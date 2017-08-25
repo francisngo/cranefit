@@ -4,32 +4,51 @@ const { User, Template, History, Goal } = require('../db');
  *  API endpoints
  */
 
+// API request helper function
+const sendResults = function sendResults(resultsPromise, res) {
+  resultsPromise
+    .catch(results => {
+      res.statusCode = 500;
+      res.end('DB error');
+    })
+    .then(results => res.json(results));
+};
+
 // POST request handlers
 exports.post = {
   users: function(req, res) {
-    User.create(req.body);
-    res.send('Posted User');
+    sendResults(User.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   },
   workout: function(req, res) {
-    Template.create(req.body);
-    res.send('Posted Template');
+    sendResults(Template.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   },
   goals: function(req, res) {
-    Goal.create(req.body);
-    res.send('Posted Goal');
+    sendResults(Goal.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   },
   histories: function(req, res) {
-    History.create(req.body);
-    res.send('Posted History');
+    sendResults(History.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
   }
+};
+
+// GET request helper function
+const getDocumentsByUserId = function getDocumentsByUserId(Model, userId) {
+  return new Promise((resolve, reject) => {
+    Model.find({user_id: userId }, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
 };
 
 // GET request handlers
 exports.get = {
+  // This function seems not to be used
   users: function(req, res) {
-    var ident = req.params.id;
     var user = null;
-    User.find({id: ident }, function(err, target) {
+    User.find({id: req.user.sub }, function(err, target) {
       if (err) console.log(err);
       user = target;
     })
@@ -38,47 +57,15 @@ exports.get = {
     });
   },
   templates: function(req, res) {
-    const templates = [];
-
-    Template.find({user_id: req.user.sub}, function(err, template) {
-      if (err) console.log(err);
-      else templates.push(template);
-    })
-    .then(function() {
-      res.send(templates);
-    });
+    sendResults(getDocumentsById(Template, req.user.sub), res);
   },
   workout: function(req, res) {
-    const templates = [];
-
-    Template.find({user_id: req.user.sub}, function(err, template) {
-      if (err) console.log(err);
-      else templates.push(template);
-    })
-    .then(function() {
-      res.send(templates);
-    });
+    sendResults(getDocumentsByUserId(Template, req.user.sub), res);
   },
   histories: function(req, res) {
-    const histories = [];
-
-    History.find({user_id: req.user.sub}, function(err, history) {
-      if (err) console.log(err);
-      else histories.push(history);
-    })
-    .then(function() {
-      res.send(histories);
-    });
+    sendResults(getDocumentsByUserId(History, req.user.sub), res);
   },
   goals: function(req, res) {
-    var goals = [];
-
-    Goal.find({user_id: req.user.sub}, function(err, goal) {
-      if (err) console.log(err);
-      else goals.push(goal);
-    })
-    .then(function() {
-      res.send(goals);
-    });
+    sendResults(getDocumentsByUserId(Goal, req.user.sub), res);
   }
 }
