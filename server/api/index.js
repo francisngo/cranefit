@@ -25,6 +25,27 @@ exports.post = {
 };
 
 // GET request handlers
+const getModelsByUserId = function getModelsByUserId(Model, userId) {
+  return new Promise((resolve, reject) => {
+    Model.find({user_id: userId }, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+};
+
+const sendResults = function sendResults(resultsPromise, res) {
+  resultsPromise
+    .then(results => res.json(results))
+    .catch((err) => {
+      res.statusCode = 500;
+      res.end(err);
+    });
+};
+
 exports.get = {
   users: function(req, res) {
     var user = null;
@@ -37,47 +58,15 @@ exports.get = {
     });
   },
   templates: function(req, res) {
-    const templates = [];
-
-    Template.find({user_id: req.user.sub}, function(err, template) {
-      if (err) console.log(err);
-      else templates.push(template);
-    })
-    .then(function() {
-      res.send(templates);
-    });
+    sendResults(getModelsById(Template, req.user.sub), res);
   },
   workout: function(req, res) {
-    const templates = [];
-
-    Template.find({user_id: req.user.sub}, function(err, template) {
-      if (err) console.log(err);
-      else templates.push(template);
-    })
-    .then(function() {
-      res.send(templates);
-    });
+    sendResults(getModelsByUserId(Template, req.user.sub), res);
   },
   histories: function(req, res) {
-    const histories = [];
-
-    History.find({user_id: req.user.sub}, function(err, history) {
-      if (err) console.log(err);
-      else histories.push(history);
-    })
-    .then(function() {
-      res.send(histories);
-    });
+    sendResults(getModelsByUserId(History, req.user.sub), res);
   },
   goals: function(req, res) {
-    var goals = [];
-
-    Goal.find({user_id: req.user.sub}, function(err, goal) {
-      if (err) console.log(err);
-      else goals.push(goal);
-    })
-    .then(function() {
-      res.send(goals);
-    });
+    sendResults(getModelsByUserId(Goal, req.user.sub), res);
   }
 }
