@@ -10,16 +10,15 @@ def read_in():
     return json.loads(lines[0])
 
 def main():
+
     [dates, nums] = read_in()
     df = pd.DataFrame({'ds': dates, 'y': nums})
-    print(df.head())
     # m = Prophet(weekly_seasonality=False, yearly_seasonality=False)
     m = Prophet()
     m.fit(df)
     future = m.make_future_dataframe(periods=31)
-    print(future.tail())
     forecast = m.predict(future)
-    print(forecast[['ds', 'yhat']].tail())
+    print(list(forecast.yhat.values))
 
 #start process
 if __name__ == '__main__':
