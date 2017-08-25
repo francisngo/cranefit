@@ -1,10 +1,10 @@
 angular.module('sparrowFit')
-.controller('AddGoalCtrl', function(goalService,store) {
+.controller('AddGoalCtrl', function(goalService, store) {
 
     var profile = store.get('profile');
     this.userId = store.get('profile')['user_id'];
 
-  this.insertGoal= function(){
+  this.insertGoal = function(){
 
     //fetch and create goal to be inserted
     var dynamicGoal = {}
@@ -14,21 +14,16 @@ angular.module('sparrowFit')
     dynamicGoal.name = this.name;
     dynamicGoal.emailAlert = this.hasEmailAlert;
 
-
-    // dynamicGoal.startDate='!!!temporary fake messge!!!';
-    // dynamicGoal.endDate='!!!temporary fake messge!!!';
-    // dynamicGoal.startDate='!!!temporary fake messge!!!';
-    // dynamicGoal.completionRate=0;
-    // dynamicGoal.workoutPace = 0;
-    // dynamicGoal.workoutPosition ='ahead of',
-    // dynamicGoal.MotivationPhrase='Take your first workout now !',
-
     dynamicGoal = JSON.stringify(dynamicGoal);
     console.log('in insertGoal() in AddGoalCtrl = ');
     goalService.addGoal(dynamicGoal,function(goalInserted){
       console.log('mocked up the insertion this new goal',goalInserted);
     }); // implement a proper callBAck when real datas
   }
+
+  this.format = 'yyyy/MM/dd';
+  this.date = new Date();
+
 })
 .component('addGoal', {
   controller: 'AddGoalCtrl',
@@ -55,5 +50,3 @@ angular.module('sparrowFit')
 //     "emailAlert" : "false"
 //   }
 // ]
-
-

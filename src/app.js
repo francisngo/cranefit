@@ -11,7 +11,7 @@ angular // add module dependencies and configure it
         });
       })
       .catch(console.error);
-      
+
     $stateProvider
       .state('home', {
         url:'/home',
@@ -55,13 +55,13 @@ angular // add module dependencies and configure it
         component: 'workout'
       })
       .state({
-        name:'goals',
+        name: 'goals',
         url:'/goals',
         component: 'goals',
         resolve : {
           resolveGoal : function (goalService) {
-            var goals=goalService.getAllGoals();
-            //console.log( goals);
+            var goals = goalService.getAllGoals();
+            //console.log(goals);
             return goals;
           }
         }
@@ -74,7 +74,7 @@ angular // add module dependencies and configure it
         resolve : {
           resolveGoalItem : function (goalService,$transition$) {
             var goalDetailAfterUSerClick= goalService.getGoal($transition$.params().goalID);
-            console.log('in resolve goal, goalDetailAfterUSerClick = '+JSON.stringify(goalDetailAfterUSerClick));
+            // console.log('in resolve goal, goalDetailAfterUSerClick = '+JSON.stringify(goalDetailAfterUSerClick));
             return goalDetailAfterUSerClick;
           }
         }
@@ -120,13 +120,7 @@ angular // add module dependencies and configure it
             return '!!!!! implement me !!!!!';
           }
         }
-      })
-
-      ;
-
-
-
-
+      });
 
 
 
@@ -184,7 +178,7 @@ angular // add module dependencies and configure it
     // fires anytime routing changes or page refreshes
     // will use to check users authentication state
     $rootScope.$on('$locationChangeStart', function() {
-      console.log('run ran!');
+      // console.log('run ran!');
       // console.log('token expired?', jwtHelper.isTokenExpired(token))
       var token = store.get('id_token');
       if (token) { // if there is a token
