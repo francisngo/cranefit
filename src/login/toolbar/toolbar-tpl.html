@@ -8,14 +8,6 @@
     <span flex></span>
     <!-- will need to conditionally hide/show buttons -->
     <md-button
-      aria-label="Application"
-      ui-sref="application"
-      ng-if="toolbar.auth.isAuthenticated"
-      >
-      Application
-
-    </md-button>
-    <md-button
       aria-label="Login"
       ng-click="toolbar.login()"
       ng-if="!toolbar.auth.isAuthenticated">
