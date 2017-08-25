@@ -20,7 +20,6 @@
   "homepage": "https://github.com/Ankit09osr/sparrow#readme",
   "dependencies": {
     "angular": "^1.6.5",
-    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "bower": "^1.8.0",
     "cors": "^2.8.4",
