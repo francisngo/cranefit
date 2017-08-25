@@ -1,1 +1,49 @@
-<h2> in panel !!!! </h2>
+<div class="row" style="padding-top: 15px; margin: 10px auto;">
+  <div class="col-lg-12 mb-12 border">
+    <h1>Panel</h1>
+    <div class="chart">
+    </div>
+  </div>
+</div>
+
+<script>
+    var workoutData = [10, 45, 25, 15, 50];
+    var width = 1000;
+    var height = 500;
+
+    var scaling = d3.scaleLinear()
+      .domain([0, 100]) //how big the area where data is
+      .range([0, width]); //the size of data area
+
+    //===== B. comment out to see difference =====//
+    var axis = d3.axisBottom() //adds the bottom axis
+      .ticks(10) //give it tick marks (value divided by domain)
+      .scale(scaling); //apply scaling size to axis line
+    //==============================================//
+
+    var canvas = d3.select('.chart')
+      .append('svg') //appends the svg element to chart container
+      .attr('width', width) //sets the width of canvas
+      .attr('height', height) //sets the height of canvas
+
+      //===== A. comment out to see difference =====//
+      .append('g') //group bars together
+      .attr('transform', 'translate(20, 50)') //CSS transforms
+      //NOTE: play around with translate numbers to see how it can fit
+      //==============================================//
+
+    var dataBars = canvas.selectAll('rect')
+      .data(workoutData) //feed it data
+      .enter() //enter in data
+      .append('rect') //append it to rect (rect gets created as svg child)
+      .attr('fill', 'pink') //color of bars
+      .attr('width', (data) => { return scaling(data); }) //width of data bars with scaling
+      .attr('height', 20) //height of bars
+      .attr('y', (data, index) => { return index * 25; }) //space between each bar
+
+    //===== B. comment out to see difference =====//
+    canvas.append('g') // append group to chart
+      .attr('transform', 'translate(0, 200)')
+      .call(axis); //appear in screen
+    //==============================================//
+  </script>
