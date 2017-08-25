@@ -1,17 +1,14 @@
+require('dotenv').config({ silent: true });
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
-require('dotenv').config({ silent: true });
-
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 // Error Handling
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
-
 //CREATING THE SCHEMA
-
 const userSchema = new Schema({
   partner_user_id: String,
   name: String,
