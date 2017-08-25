@@ -1,25 +1,116 @@
 <div class="container">
-<div>
-  <label>Template Name</label>
-  <input type="text" ng-model="$ctrl.inputName"/>
-  <button ng-click='$ctrl.name($ctrl.inputName)' class="btn btn-success">Get Template</button>
-  <button ng-click="$ctrl.getTimedTemps()" class="btn btn-info">Timed Templates</button>
-  <button ng-click="$ctrl.getUntimedTemps()" class="btn btn-info">Untimed Templates</button>
-</div>
-<div id="show-timed-untimed col-md-6">
-  <ul>
-    <li ng-click="$ctrl.name(show)" ng-repeat="show in $ctrl.showTimed | filter:$ctrl.inputName" show="show">
-      {{ show }}
-    </li>
-  </ul>
-  </br>
-  <ul>
-    <li ng-click="$ctrl.name(show2)" ng-repeat="show2 in $ctrl.showUntimed | filter:$ctrl.inputName" show2="show2">
-      {{ show2 }}
-    </li>
-  </ul>
-</div>
+  <div>
+    <h1 class="page-header">Log Workout</h1>
+    <button class="btn btn-default" type="button">Log Workout</button>
+    <button class="btn btn-default" type="button">Edit Workout</button>
 
-<timed-view ng-if="$ctrl.timed" data="$ctrl.workoutData" workout="$ctrl.workout"></timed-view>
-<untimed-view ng-if="$ctrl.untimed" data="$ctrl.workoutData" workout="$ctrl.workout"></untimed-view>
+    </br>
+
+  <div class="row" style="padding-top: 15px; margin: 10px auto;">
+    <div class="col-lg-4 mb-4 form">
+      <form>
+        <div class="form-group">
+          <label>Select Workout to Begin</label>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle"" type="button" id="dropdownWorkout" data-toggle="dropdox" aria-haspopup="true" aria-expanded="true">
+              Select Your Workout...
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownWorkout">
+              <li><a href="#">FILL_ME_IN</a></li>
+              <li><a href="#">FILL_ME_IN</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+        <label>Name:</label>
+        <div class="form-group">
+          <label>Value</label>
+          <input type="text" class="form-control" placeholder="Enter Value" />
+        </div>
+        <label>Unit:</label>
+        </br>
+        <button type="submit" class="btn btn-default">Log</button>
+
+
+
+      </form>
+    </div>
+  </div>
+
+
+      </br>
+      </br>
+      </br>
+      </br>
+
+
+  <div class="row" style="padding-top: 15px; margin: 10px auto;">
+    <div class="col-lg-4 mb-4 form">
+      <form>
+        <div class="form-group">
+          <label>Select Workout to Edit</label>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle"" type="button" id="dropdownWorkout" data-toggle="dropdox" aria-haspopup="true" aria-expanded="true">
+              Select Your Workout...
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownWorkout">
+              <li><a href="#">FILL_ME_IN</a></li>
+              <li><a href="#">FILL_ME_IN</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Enter New Name</label>
+          <input type="text" class="form-control" placeholder="Old Name" />
+        </div>
+
+        <div class="form-group">
+          <label>Enter New Default Value</label>
+          <input type="text" class="form-control" placeholder="Old Default Value"/>
+        </div>
+
+        <div class="form-group">
+          <label>Enter New Unit</label>
+          <input type="text" class="form-control" placeholder="Old Unit"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">Edit</button>
+
+      </form>
+    </div>
+  </div>
+
+
+
+      </br>
+      </br>
+      </br>
+      </br>
+
+
+    <input type="text" ng-model="$ctrl.inputName"/>
+    <button ng-click='$ctrl.name($ctrl.inputName)' class="btn btn-success">Get Template</button>
+    <button ng-click="$ctrl.getTimedTemps()" class="btn btn-info">Timed Templates</button>
+    <button ng-click="$ctrl.getUntimedTemps()" class="btn btn-info">Untimed Templates</button>
+  </div>
+  <div id="show-timed-untimed col-md-6">
+    <ul>
+      <li ng-click="$ctrl.name(show)" ng-repeat="show in $ctrl.showTimed | filter:$ctrl.inputName" show="show">
+        {{ show }}
+      </li>
+    </ul>
+    </br>
+    <ul>
+      <li ng-click="$ctrl.name(show2)" ng-repeat="show2 in $ctrl.showUntimed | filter:$ctrl.inputName" show2="show2">
+        {{ show2 }}
+      </li>
+    </ul>
+  </div>
+
+  <timed-view ng-if="$ctrl.timed" data="$ctrl.workoutData" workout="$ctrl.workout"></timed-view>
+  <untimed-view ng-if="$ctrl.untimed" data="$ctrl.workoutData" workout="$ctrl.workout"></untimed-view>
 </div>
