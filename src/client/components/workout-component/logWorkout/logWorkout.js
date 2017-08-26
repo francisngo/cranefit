@@ -10,11 +10,10 @@ angular.module('sparrowFit')
   this.workoutHistory = {};
 
   this.logWorkout = function() {
-    this.workoutHistory.WorkoutID = $scope.selectedWorkout._id;
-    this.workoutHistory.Date = this.date.valueOf();
-    this.workoutHistory.Number = this.value;
+    this.workoutHistory.date = this.date.valueOf();
+    this.workoutHistory.number = this.value;
 
-    httpService.sendData(`/api/workouts/${this.workoutHistory.WorkoutID}/logs`, this.workoutHistory);
+    httpService.sendData(`/api/workouts/${$scope.selectedWorkout._id}/logs`, this.workoutHistory);
   };
 })
 .component('logWorkout', {
