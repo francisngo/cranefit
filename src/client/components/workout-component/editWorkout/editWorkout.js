@@ -15,7 +15,7 @@ angular.module('sparrowFit')
 
   console.log('object to be sent: ', this.data);
 
-  // httpService.updateData???('/api/workout', this.data);
+  // httpService.updateData???('/api/workouts', this.data);
 
 })
 .component('editWorkout', {
