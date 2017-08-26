@@ -4,7 +4,7 @@ angular.module('sparrowFit')
   this.userData = {};
   this.workoutData = '';
   this.workout = '';
-  this.url = '/api/workout/';
+  this.url = '/api/workouts/';
 
   this.name = function(name) {
     this.workoutData = userDataService.getWorkout(this.userData, name);
