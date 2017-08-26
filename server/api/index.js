@@ -53,7 +53,7 @@ exports.post = {
       }
     });
   },
-  workout: function(req, res) {
+  workouts: function(req, res) {
     sendResults(postUserSubDoc(req.user.sub, 'workouts', req.body), res);
   },
   goals: function(req, res) {
@@ -71,7 +71,7 @@ exports.get = {
   users: function(req, res) {
     sendResults(retrieveUser(req.user.sub), res);
   },
-  workout: function(req, res) {
+  workouts: function(req, res) {
     sendResults(retrieveUserSubDocs(req.user.sub, 'workouts'), res);
   },
   // The function of this endpoint needs reviewing -- e.g. do we send an id of a workout to get the history?

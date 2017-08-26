@@ -12,7 +12,7 @@ angular.module('sparrowFit')
     console.log('object to be sent to server: ', this.data);
 
     // make POST request to server
-    httpService.sendData('/api/workout', this.data);
+    httpService.sendData('/api/workouts', this.data);
   };
 })
 .component('createWorkout', {
