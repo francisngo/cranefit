@@ -43,7 +43,7 @@ const retrieveUserSubDocs = function retrieveUserSubDocs(userId, subDocName) {
 
 // POST request handlers
 exports.post = {
-  users: function(req, res) {
+  users: function postUsers(req, res) {
     User.findOrCreate({ user_id: req.user.sub }, (err, result) => {
       if (err) {
         res.statusCode = 500;
@@ -53,32 +53,28 @@ exports.post = {
       }
     });
   },
-  workouts: function(req, res) {
+  workouts: function postWorkouts(req, res) {
     sendResults(postUserSubDoc(req.user.sub, 'workouts', req.body), res);
   },
-  goals: function(req, res) {
-    sendResults(postUserSubDoc(req.user.sub, 'goals', req.body), res);
+  workoutsLogs: function postWorkoutLogs(req, res) {
+    retrieveUserSubDocs(req.user.sub, 'workouts')
+      .then(result => res.json(result.id(req.params.workoutId)));
   },
-  // See note on corresponding GET endpoint below
-  // histories: function(req, res) {
-  //   sendResults(History.create(Object.assign({}, req.body, { user_id: req.user.sub })), res);
-  // }
+  goals: function postGoals(req, res) {
+    sendResults(postUserSubDoc(req.user.sub, 'goals', req.body), res);
+  }
 };
 
 // GET request handlers
 exports.get = {
   // This function seems not to be used
-  users: function(req, res) {
+  users: function getUsers(req, res) {
     sendResults(retrieveUser(req.user.sub), res);
   },
-  workouts: function(req, res) {
+  workouts: function getWorkouts(req, res) {
     sendResults(retrieveUserSubDocs(req.user.sub, 'workouts'), res);
   },
-  // The function of this endpoint needs reviewing -- e.g. do we send an id of a workout to get the history?
-  // histories: function(req, res) {
-  //   sendResults(getDocumentsByUserId(History, req.user.sub), res);
-  // },
-  goals: function(req, res) {
+  goals: function getGoals(req, res) {
     sendResults(retrieveUserSubDocs(req.user.sub, 'goals'), res);
   }
 }
