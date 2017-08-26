@@ -57,8 +57,17 @@ exports.post = {
     sendResults(postUserSubDoc(req.user.sub, 'workouts', req.body), res);
   },
   workoutsLogs: function postWorkoutLogs(req, res) {
-    retrieveUserSubDocs(req.user.sub, 'workouts')
-      .then(result => res.json(result.id(req.params.workoutId)));
+    const workoutId = req.params.workoutId;
+    const body = Object.assign({}, req.body, new Date(req.body.date));
+    let index;
+    sendResults(
+      retrieveUser(req.user.sub)
+        .then(user => {
+          index = user.workouts.id(workoutId).workoutHistory.push(body) - 1;
+          return user.save();
+        })
+        .then(user => user.workouts.id(workoutId).workoutHistory[index])
+    , res);
   },
   goals: function postGoals(req, res) {
     sendResults(postUserSubDoc(req.user.sub, 'goals', req.body), res);
