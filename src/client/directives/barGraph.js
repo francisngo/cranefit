@@ -1,10 +1,18 @@
 angular.module('sparrowFit')
+	.controller('barGraphCtrl', ['$scope', function($scope) {
+		
+	}])
   .directive('barGraph', function() {
     return {
       restrict: "EA",
       template: '<div id="chart"></div>',
+			scope: {
+				data: "="
+			},
       link: function(scope, element, attrs) {
-        var workoutData = [10, 45, 69, 21];
+				console.log('this is scope', scope.data);
+				console.log('this is attrs', attrs);
+        var barData = scope.data;
         var width = 1000;
         var height = 500;
 
@@ -18,7 +26,7 @@ angular.module('sparrowFit')
           .attr('height', height)
 
         var dataBars = canvas.selectAll('rect')
-          .data(workoutData)
+          .data(barData)
           .enter()
           .append('rect')
           .attr('fill', 'pink')
