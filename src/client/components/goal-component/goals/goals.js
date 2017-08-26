@@ -1,6 +1,5 @@
 angular.module('sparrowFit')
   .controller('GoalsCtrl', function() {
-
   })
   .component('goals', {
     controller: 'GoalsCtrl',
