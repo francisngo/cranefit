@@ -1,7 +1,4 @@
 angular.module('sparrowFit')
-	.controller('barGraphCtrl', ['$scope', function($scope) {
-		
-	}])
   .directive('barGraph', function() {
     return {
       restrict: "EA",
@@ -10,8 +7,6 @@ angular.module('sparrowFit')
 				data: "="
 			},
       link: function(scope, element, attrs) {
-				console.log('this is scope', scope.data);
-				console.log('this is attrs', attrs);
         var barData = scope.data;
         var width = 1000;
         var height = 500;
