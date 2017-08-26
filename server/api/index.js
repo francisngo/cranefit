@@ -8,7 +8,8 @@ const { User } = require('../db');
 const sendResults = function sendResults(resultsPromise, res) {
   resultsPromise
     .then(results => res.json(results))
-    .catch(results => {
+    .catch((err) => {
+      console.log(err);
       res.statusCode = 500;
       res.end('DB error');
     });
@@ -84,6 +85,17 @@ exports.get = {
     sendResults(retrieveUserSubDocs(req.user.sub, 'workouts'), res);
   },
   goals: function getGoals(req, res) {
-    sendResults(retrieveUserSubDocs(req.user.sub, 'goals'), res);
+    retrieveUser(req.user.sub)
+      .then(user => user.goals.map((goal) => {
+          const { name, workoutHistory } = user.workouts.id(goal.workoutId);
+          return {
+            goalDate: goal.endDate,
+            goalNumber: goal.goalNumber,
+            workoutName: name,
+            workoutHistory
+          }
+        }
+      ))
+      .then(result => res.json(result));
   }
 }
