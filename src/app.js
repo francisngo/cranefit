@@ -111,6 +111,18 @@ angular // add module dependencies and configure it
         }
       })
       .state({
+        name:'logWorkout',
+        url:'/log',
+        parent:'workout',
+        component:'logWorkout'
+      })
+      .state({
+        name:'editWorkout',
+        url:'/edit',
+        parent:'workout',
+        component:'editWorkout'
+      })
+      .state({
         name :'history',
         url:'/history',
         parent :'goals',
