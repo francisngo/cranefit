@@ -6,7 +6,6 @@ const app = express();
 const logger = require('morgan');
 const cors = require('cors');
 // crane-fit modules
-const { User, Template, History, Goal } = require('./db');
 const api = require('./api');
 // JWT setup
 const jwt = require('express-jwt');
@@ -51,9 +50,9 @@ app.use(jwt({ secret: jwtSecret, audience: process.env.AUDIENCE, credentialsRequ
 app.post('/api/users', api.post.users);
 app.post('/api/workout', api.post.workout);
 app.post('/api/goals', api.post.goals);
-app.post('/api/histories', api.post.histories);
+// app.post('/api/histories', api.post.histories);
 // GET request handlers
 app.get('/api/workout/', api.get.workout);
-app.get('/api/histories/', api.get.histories);
+// app.get('/api/histories/', api.get.histories);
 app.get('/api/goals/', api.get.goals);
 app.get('/api/users/', api.get.users);
