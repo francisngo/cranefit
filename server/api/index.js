@@ -85,17 +85,18 @@ exports.get = {
     sendResults(retrieveUserSubDocs(req.user.sub, 'workouts'), res);
   },
   goals: function getGoals(req, res) {
-    retrieveUser(req.user.sub)
-      .then(user => user.goals.map((goal) => {
-          const { name, workoutHistory } = user.workouts.id(goal.workoutId);
-          return {
-            goalDate: goal.endDate,
-            goalNumber: goal.goalNumber,
-            workoutName: name,
-            workoutHistory
+    sendResults(
+      retrieveUser(req.user.sub)
+        .then(user => user.goals.map((goal) => {
+            const { name, workoutHistory } = user.workouts.id(goal.workoutId);
+            return {
+              goalDate: goal.endDate,
+              goalNumber: goal.goalNumber,
+              workoutName: name,
+              workoutHistory
+            }
           }
-        }
-      ))
-      .then(result => res.json(result));
+        ))
+    , res)
   }
 }
