@@ -4,8 +4,7 @@ angular.module('sparrowFit')
       restrict: "EA",
       template: '<div id="chart"></div>',
       link: function(scope, element, attrs) {
-        console.log('this is d3', d3);
-        var workoutData = [10, 45, 25, 15, 50];
+        var workoutData = [10, 45, 69, 21];
         var width = 1000;
         var height = 500;
 
@@ -26,9 +25,6 @@ angular.module('sparrowFit')
           .attr('width', (data) => { return scaling(data); })
           .attr('height', 20)
           .attr('y', (data, index) => { return index * 25; })
-
-        console.log('this is dataBars', dataBars);
       }
     }
   })
-	
