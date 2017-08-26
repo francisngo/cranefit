@@ -3,6 +3,8 @@ angular.module('sparrowFit')
   // object to store data to be sent to sever
   this.data = {};
 
+  this.tellytubbies = [20,30,40];
+
   //addWorkout() create a template of named workout
   this.addWorkout = function() {
     this.data.name = this.name;
