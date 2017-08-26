@@ -1,0 +1,34 @@
+<div class="row" style="padding-top: 15px; margin: 10px auto;">
+  <div class="col-lg-4 mb-4 form">
+    <form>
+      <div class="form-group">
+        <label>Select Workout to Edit</label>
+
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle"" type="button" id="dropdownWorkout" data-toggle="dropdox" aria-haspopup="true" aria-expanded="true">
+            Select Your Workout...
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownWorkout">
+            <li><a href="#">FILL_ME_IN</a></li>
+            <li><a href="#">FILL_ME_IN</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label>Enter New Name</label>
+        <input ng-model="$ctrl.newName" type="text" class="form-control" placeholder="Old Name" />
+      </div>
+      <div class="form-group">
+        <label>Enter New Default Value</label>
+        <input ng-model="$ctrl.newUnitValue" type="text" class="form-control" placeholder="Old Default Value"/>
+      </div>
+      <div class="form-group">
+        <label>Enter New Unit</label>
+        <input ng-model="$ctrl.newUnitName" type="text" class="form-control" placeholder="Old Unit"/>
+      </div>
+      <button ng-click="$ctrl.editWorkout()" type="submit" class="btn btn-default">Edit</button>
+    </form>
+  </div>
+</div>
