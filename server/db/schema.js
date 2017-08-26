@@ -10,7 +10,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 //CREATING THE SCHEMA
 const goalSchema = new Schema({
-  workoutId: Number,
+  workoutId: String,
   goalNumber: Number,
   endDate: Date
 });

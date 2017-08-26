@@ -49,10 +49,9 @@ app.use(jwt({ secret: jwtSecret, audience: process.env.AUDIENCE, credentialsRequ
 // POST request handlers
 app.post('/api/users', api.post.users);
 app.post('/api/workouts', api.post.workouts);
+app.post('/api/workouts/:workoutId/logs', api.post.workoutsLogs);
 app.post('/api/goals', api.post.goals);
-// app.post('/api/histories', api.post.histories);
 // GET request handlers
 app.get('/api/workouts/', api.get.workouts);
-// app.get('/api/histories/', api.get.histories);
 app.get('/api/goals/', api.get.goals);
 app.get('/api/users/', api.get.users);
