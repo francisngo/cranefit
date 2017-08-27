@@ -7,7 +7,14 @@ const runProphet = require('./runProphet');
 
 exports.predictUserGoal = function predictUserGoal(user, goal) {
   const workoutHistory = user.workouts.id(goal.workoutId).workoutHistory;
+  // If not enough samples for any possible successful prediction, return
   const length = workoutHistory.length;
+  if (length < 5) {
+    goal.predicted = false;
+    user.save();
+    return;
+  }
+  // Else make prediction
   const dates = Array(length);
   const nums = Array(length);
   const goalDate = moment(goal.endDate);
@@ -24,5 +31,14 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
   if (goalDate.isAfter(latest)) {
     difference = goalDate.diff(latest, 'day');
   };
-  runProphet(dates, nums, difference);
+  runProphet(dates, nums, difference)
+    .then(results => {
+      goal.predicted = results;
+      user.save()
+    })
+    .catch(error => {
+      console.error(error);
+      goal.predicted = false;
+      user.save();
+    });
 }

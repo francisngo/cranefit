@@ -13,7 +13,8 @@ const goalSchema = new Schema({
   workoutId: String,
   goalNumber: Number,
   startDate: Date,
-  endDate: Date
+  endDate: Date,
+  predicted: []
 });
 
 const workoutHistorySchema = new Schema({
