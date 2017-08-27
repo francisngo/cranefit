@@ -7,8 +7,6 @@
             <img ng-src="{{ user.profile.picture }}" alt="profile-picture">
           </div>
           <md-card-actions layout="column" layout-align="end center"></md-card-actions>
-            <md-button ng-click="user.getMessage()">Get Public Message</md-button>
-            <md-button ng-click="user.getSecretMessage()">Get Private Message</md-button>
         </md-card-title-media>
 
         <md-card-title-text>
@@ -18,5 +16,9 @@
         </md-card-title-text>
       </md-card-title>
     </md-card>
+    <md-card>
+      {{user.testMessage}}
+    </md-card>
+    
   </md-content>
 </div>

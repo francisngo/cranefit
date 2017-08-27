@@ -1,6 +1,17 @@
 angular.module('sparrowFit')
-  .controller('profileController', profileController)
+  .controller('profileController', function(store, httpService) {
 
-function profileController($http, store, $location) {
-  this.profile = store.get('profile');
-}
+    this.testMessage = 'Hello World';
+    this.workouts = {};
+    this.profile = store.get('profile');
+
+    httpService.getData('/api/workouts', function(workouts) {
+      this.workouts = workouts;
+      console.log('profile controller called', this.workouts);
+    });  
+  })
+  .component('profile', {
+    controller: 'profileController',
+    templateUrl: 'login/profile/profile-tpl.html'
+  });
+
