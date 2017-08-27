@@ -1,7 +1,22 @@
 const moment = require('moment');
-const { User } = require('../db');
+const db = require('../db');
+const { User } = db;
 
-exports.predictUserGoal(user_id, workoutId) {
-  User.find({ user_id }).exec()
-    .then()
+exports.predictUserGoal = function predictUserGoal(user, goal) {
+  // Get user's workout history
+  const dates = {};
+  user.workouts.id(goal.workoutId).workoutHistory.forEach((log) => {
+    dates[moment(log.date).format('YYYY-MM-DD')] = log.number;
+  });
+  // Pad skipped days with NaN
+  const startDate = moment(goal.startDate);
+  const endDate = moment(goal.endDate);
+  while (startDate.isSameOrBefore(endDate, 'day')) {
+    const dateString = startDate.format('YYYY-MM-DD');
+    if (!dates.hasOwnProperty(dateString)) {
+      dates[dateString] = NaN;
+    };
+    startDate.add(1, 'day');
+  }
+  console.log(dates);
 }
