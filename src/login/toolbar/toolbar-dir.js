@@ -20,7 +20,7 @@ function toolbarController(auth, store, $location, $http, httpService) {
   };
 
   function login() {
-    console.log('login clicked');
+    // console.log('login clicked');
     //send request to auth0 servers
     auth.signin({}, function(profile, token) {
       // if everything checks out it will set user profile and token into local storage.

@@ -91,8 +91,6 @@ angular.module('sparrowFit')
           .x(function(d) { return x(d.Date); })
           .y(function(d) { return y(d.Number); });
 
-        console.log(valueline);
-
         var svg = d3.select('#chart')
             .append('svg')
             .attr('width', width + margin.left + margin.right)
@@ -122,8 +120,6 @@ angular.module('sparrowFit')
           svg.append('g')
             .attr('class', 'grid')
             .call(make_y_gridlines().tickSize(-width).tickFormat(''));
-
-            console.log(data);
 
           // Add the valueline path.
           svg.append("path")
