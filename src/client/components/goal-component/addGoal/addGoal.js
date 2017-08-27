@@ -11,10 +11,9 @@ angular.module('sparrowFit')
 
   this.addGoal = function() {
     this.goal.workoutId = $scope.selectedWorkout._id;
-    this.goal.goalNumber = this.goalNumber;
+    this.goal.goalNumber = Number(this.goalNumber);
     this.goal.startDate = Date.now().valueOf();
     this.goal.endDate = this.goalEndDate.valueOf();
-
     httpService.sendData('/api/goals', this.goal);
   };
 })
