@@ -1,24 +1,24 @@
 <div class="row" style="padding-top: 15px; margin: 10px auto;">
-  <div class="col-lg-6 mb-6">
+  <div class="col-lg-6 mb-6 form">
     <form>
       <div class="form-group">
-        <label>Workout to Add</label>
+        <label>Workout to Log</label>
         <select ng-model="selectedWorkout" ng-options="workout.name for workout in workouts" class="form-control">
           <option value="{{workout}}"></option>
         </select>
       </div>
       <div ng-if="selectedWorkout">
         <div class="form-group">
-          <label>Goal End Date</label>
-          <input ng-model="$ctrl.goalEndDate" type="date" class="form-control"/>
+          <label>Date</label>
+          <input ng-model="$ctrl.date" type="date" class="form-control"/>
         </div>
         <div class="form-group">
-          <label>Goal Number</label>
-          <input ng-model="$ctrl.goalNumber" type="text" class="form-control" placeholder="9000" />
+          <label>Number</label>
+          <input ng-model="$ctrl.value" type="text" class="form-control" placeholder="{{selectedWorkout.unitValue}}"/>
         </div>
         <label>Unit: {{selectedWorkout.unitName}}</label>
         </br>
-        <button ng-click="$ctrl.addGoal()" type="submit" class="btn btn-default">Add</button>
+        <button ng-click="$ctrl.logWorkout()" type="submit" class="btn btn-default">Log</button>
       </div>
     </form>
   </div>

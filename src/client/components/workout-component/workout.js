@@ -4,11 +4,10 @@ angular.module('sparrowFit')
   this.userData = {};
   this.workoutData = '';
   this.workout = '';
-  this.user_id = store.get('profile')['user_id'];
-  this.url = '/api/workout/'+this.user_id;
+  this.url = '/api/workouts/';
 
   this.name = function(name) {
-    this.workoutData = userDataService.getWorkout(this.userData, name);//jogging,a
+    this.workoutData = userDataService.getWorkout(this.userData, name);
     this.workout = this.workoutData.template;
     this.timed = this.workoutData.timed;
     if(this.timed===false){
@@ -19,7 +18,7 @@ angular.module('sparrowFit')
   };
 
   httpService.getData(this.url, (returnValue) => {
-    this.userData = returnValue[0];
+    this.userData = returnValue;
 
     this.myTimedTemplates = this.userData
     .filter((a) => {

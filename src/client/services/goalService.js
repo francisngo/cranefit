@@ -1,32 +1,30 @@
-// goalService.getAllGoals();
-//
 angular.module('sparrowFit')
-.service('goalService',function($http){
+  .service('goalService', function($http){
 
-  this.getAllGoals= function (){
-    var allGoals=$http.get('/api/get/goals');
-    console.log('allGoals in goalService',allGoals);
-   return allGoals;
-  }
-  this.getGoal=function(goalID){
-
-    function goalMatchesParam(goal){
-      return goal.id === Number(goalID);
+    this.getAllGoals= function (){
+      var allGoals = $http.get('/api/goals');
+      return allGoals;
     }
-    // var requestedGoal= this.getAllGoals()
-    // .filter(function(goal){
-    //   return goalMatchesParam(goal)
-    // }).join('');
+    this.getGoal = function(goalID){
 
-    var requestedGoal= this.getAllGoals()
-    .find(goalMatchesParam)
+      function goalMatchesParam(goal){
+        return goal.id === Number(goalID);
+      }
+      
+      // var requestedGoal= this.getAllGoals()
+      // .filter(function(goal){
+      //   return goalMatchesParam(goal)
+      // }).join('');
 
-    return requestedGoal
-  }
+      var requestedGoal = this.getAllGoals()
+      .find(goalMatchesParam)
 
-  this.addGoal=function(newGoal,callBack){
-    // call end point here
-    $http.post('/post/goals',newGoal);
-    callBack(newGoal);
-  };
-})
+      return requestedGoal
+    }
+
+    this.addGoal = function(newGoal, callBack){
+      // call end point here
+      $http.post('/api/goals', newGoal);
+      callBack(newGoal);
+    };
+  });

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Sparrow Fit</title>
     <!-- Auth0 Lock script and AngularJS module -->
     <script src="//cdn.auth0.com/js/lock-9.0.js"></script>
@@ -22,6 +22,12 @@
       </div>
     </div>
 
+    <!-- Bootstrap script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- d3 scripts -->
+    <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 
     <!-- client dependencies from node_modules -->
     <script crossorigin src="node_modules/angular/angular.js"></script>
@@ -44,16 +50,16 @@
 
     <!-- client scripts -->
     <script type="text/javascript" src="client/components/create-workout-component/createWorkout/createWorkout.js"></script>
-    <script type="text/javascript" src="client/components/create-workout-component/timed/timed.js"></script>
     <script type="text/javascript" src="client/components/create-workout-component/untimed/untimed.js"></script>
     <script type="text/javascript" src="client/components/workout-component/workout.js"></script>
-    <script type="text/javascript" src="client/components/workout-component/timed-component/timedView.js"></script>
     <script type="text/javascript" src="client/components/workout-component/untimed-component/untimedView.js"></script>
     <script type="text/javascript" src="client/services/httpServices.js"></script>
     <script type="text/javascript" src="client/services/userDataService.js"></script>
 
+    <script type="text/javascript" src="client/components/workout-component/logWorkout/logWorkout.js"></script>
+    <script type="text/javascript" src="client/components/workout-component/editWorkout/editWorkout.js"></script>
+
     <!-- Flip Clock Dependencies -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="bower_components/flipclock/compiled/flipclock.min.js"></script>
     <script src="client/timer/timer.js"></script>
     <script type="text/javascript" src="client/services/timerServices.js"></script>
@@ -67,6 +73,11 @@
     <script type="text/javascript" src="client/components/goal-component/history/history.js"></script>
     <script type="text/javascript" src="client/client-sample-data/sample-goals.js"></script>
     <script type="text/javascript" src="client/services/goalService.js"></script>
+    <script type="text/javascript" src="client/services/d3Service.js"></script>
+
+    <!-- d3 directive scripts-->
+    <script type="text/javascript" src="client/directives/barGraph.js"></script>
+    <script type="text/javascript" src="client/directives/pieGraph.js"></script>
 
   </body>
 </html>

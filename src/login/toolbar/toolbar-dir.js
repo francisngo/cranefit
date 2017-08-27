@@ -7,7 +7,7 @@ angular.module('sparrowFit')
   .controller('toolbarController', toolbarController);
 
 
-function toolbarController(auth, store, $location, $http) {
+function toolbarController(auth, store, $location, $http, httpService) {
   var vm = this;
   vm.login = login;
   vm.logout = logout;
@@ -26,6 +26,8 @@ function toolbarController(auth, store, $location, $http) {
       // if everything checks out it will set user profile and token into local storage.
       store.set('profile', profile);
       store.set('id_token', token); // token is jwt
+      const { name, email, user_id } = profile;
+      httpService.sendData('/API/users', { name, email, user_id });
       $location.path('/home'); // will send user to home if passes all conditions
     }, function(error) {
       console.log('error from login', error);

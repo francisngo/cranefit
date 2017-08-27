@@ -8,14 +8,6 @@
     <span flex></span>
     <!-- will need to conditionally hide/show buttons -->
     <md-button
-      aria-label="Application"
-      ui-sref="application"
-      ng-if="toolbar.auth.isAuthenticated"
-      >
-      Application
-
-    </md-button>
-    <md-button
       aria-label="Login"
       ng-click="toolbar.login()"
       ng-if="!toolbar.auth.isAuthenticated">
@@ -44,7 +36,7 @@
       Create Workout
     </md-nav-item>
     <md-nav-item md-nav-sref="workout" name="workout">
-      Workout
+      Log Workout
     </md-nav-item>
     <md-nav-item md-nav-sref="goals" name="goals">
       Goals
