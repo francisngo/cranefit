@@ -89,7 +89,9 @@ angular.module('sparrowFit')
 
         var valueline = d3.line()
           .x(function(d) { return x(d.Date); })
-          .y(function(d) { return x(d.Number); });
+          .y(function(d) { return y(d.Number); });
+
+        console.log(valueline);
 
         var svg = d3.select('#chart')
             .append('svg')
