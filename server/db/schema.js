@@ -12,6 +12,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 const goalSchema = new Schema({
   workoutId: String,
   goalNumber: Number,
+  startDate: Date,
   endDate: Date
 });
 

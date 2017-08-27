@@ -1,22 +1,22 @@
 angular.module('sparrowFit')
-.controller('editWorkoutCtrl', function(httpService) {
+.controller('editWorkoutCtrl', function($scope, httpService) {
+  $scope.workouts = {};
 
-  // To-Do: save workout selection to edit/update
+  httpService.getData('/api/workouts', function(workouts) {
+    $scope.workouts = workouts;
+    $scope.selectedWorkout = $scope.workouts[0];
+  });
 
-  // object to store data to be sent to server
   this.data = {};
 
-  // new workout template with new values
   this.editWorkout = function() {
+    this.data.workoutId = $scope.selectedWorkout._id;
     this.data.name = this.newName;
     this.data.unitValue = this.newUnitValue;
     this.data.unitName = this.newUnitName;
+
+    httpService.sendData(`TBD`, this.data);
   };
-
-  console.log('object to be sent: ', this.data);
-
-  // httpService.updateData???('/api/workouts', this.data);
-
 })
 .component('editWorkout', {
   controller: 'editWorkoutCtrl',

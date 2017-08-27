@@ -2,76 +2,24 @@
   <div class="col-lg-6 mb-6">
     <form>
       <div class="form-group">
-        <label>Select Your Workout</label>
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownWorkout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Select Your Workout...
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownWorkout">
-            <li><a href="#">FILL_ME_IN</a></li>
-            <li><a href="#">FILL_ME_IN</a></li>
-            <li><a href="#">FILL_ME_IN</a></li>
-            <li><a href="#">FILL_ME_IN</a></li>
-            <li><a href="#">FILL_ME_IN</a></li>
-          </ul>
+        <label>Workout to Add</label>
+        <select ng-model="selectedWorkout" ng-options="workout.name for workout in workouts" class="form-control">
+          <option value="{{workout}}"></option>
+        </select>
+      </div>
+      <div ng-if="selectedWorkout">
+        <div class="form-group">
+          <label>Goal End Date</label>
+          <input ng-model="$ctrl.goalEndDate" type="date" class="form-control"/>
         </div>
+        <div class="form-group">
+          <label>Goal Number</label>
+          <input ng-model="$ctrl.goalNumber" type="text" class="form-control" placeholder="9000" />
+        </div>
+        <label>Unit: {{selectedWorkout.unitName}}</label>
+        </br>
+        <button ng-click="$ctrl.addGoal()" type="submit" class="btn btn-default">Add</button>
       </div>
-      <div class="form-group">
-        <label>Enter Your Goal Number</label>
-        <input type="text" class="form-control" placeholder="Enter a Number" />
-      </div>
-      <div class="form-group">
-        <label>Enter Start of Goal Date</label>
-        <input type="date" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label>Enter End of Goal Date</label>
-        <input type="date" class="form-control"/>
-      </div>
-      <button type="submit" class="btn btn-default">Submit Goal</button>
     </form>
   </div>
 </div>
-
-<!--
-<div>
-   <form  id="form1">
-
-            enter goal name: <input ng-model="$ctrl.name"><br>
-            What is you Goal time frame :
-            <select name="timeframe" id="timeFrameSelect" ng-model="$ctrl.timeframe">
-             <option value="">Please select time frame</option>
-             <option value="day">day</option>
-             <option value="week">week</option>
-             <option value="month">month</option>
-             <option value="year">year</option>
-            </select> <br>
-            How often do you aim to workout within each time frame ? :
-            <select name="number" id="numberSelect" ng-model="$ctrl.number">
-             <option value="">Please select a number</option>
-             <option value="1">1</option>
-             <option value="2">2</option>
-             <option value="3">3</option>
-             <option value="4">4</option>
-             <option value="5">5</option>
-             <option value="10">10</option>
-             <option value="15">15</option>
-             <option value="20">20</option>
-             <option value="25">25</option>
-             <option value="30">30</option>
-             <option value="35">35</option>
-             <option value="40">40</option>
-             <option value="50">50</option>
-            </select> <br>
-            Do you want email alerts on how you re performing in regards to this goal ? :
-            <select name="hasEmailAlert" id="hasEmailAlertSelect" ng-model="$ctrl.hasEmailAlert">
-            <option value="">set your email preferencer</option>
-             <option value="true">yes</option>
-             <option value="false">no</option>
-            </select> <br>
-
-
-            <button ng-click="$ctrl.insertGoal()"> create goal </button> -->
-       <!--      <input ng-click="insertPlayer()" value="submit"> -->
-   <!-- </form> -->

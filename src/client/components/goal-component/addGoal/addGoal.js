@@ -1,52 +1,24 @@
 angular.module('sparrowFit')
-.controller('AddGoalCtrl', function(goalService, store) {
+.controller('AddGoalCtrl', function($scope, httpService) {
+  $scope.workouts = {};
 
-    var profile = store.get('profile');
-    this.userId = store.get('profile')['user_id'];
+  httpService.getData('/api/workouts', function(workouts) {
+    $scope.workouts = workouts;
+    $scope.selectedWorkout = $scope.workouts[0];
+  });
 
-  this.insertGoal = function(){
+  this.goal = {};
 
-    //fetch and create goal to be inserted
-    var dynamicGoal = {}
-    dynamicGoal.user_id = this.userId // to implement
-    dynamicGoal.number = this.number;
-    dynamicGoal.timeFrame = this.timeframe;
-    dynamicGoal.name = this.name;
-    dynamicGoal.emailAlert = this.hasEmailAlert;
+  this.addGoal = function() {
+    this.goal.workoutId = $scope.selectedWorkout._id;
+    this.goal.goalNumber = this.goalNumber;
+    this.goal.startDate = Date.now().valueOf();
+    this.goal.endDate = this.goalEndDate.valueOf();
 
-    dynamicGoal = JSON.stringify(dynamicGoal);
-    console.log('in insertGoal() in AddGoalCtrl = ');
-    goalService.addGoal(dynamicGoal,function(goalInserted){
-      console.log('mocked up the insertion this new goal',goalInserted);
-    }); // implement a proper callBAck when real datas
-  }
-
-  this.format = 'yyyy/MM/dd';
-  this.date = new Date();
-
+    httpService.sendData('/api/goals', this.goal);
+  };
 })
 .component('addGoal', {
   controller: 'AddGoalCtrl',
   templateUrl: 'client/components/goal-component/addGoal/addGoal.html'
 });
-
-// [
-//   {
-//     "id":"0",
-//     "user_id" : "2",
-//     "number":"3",
-//     "timeFrame" : "week",
-//     "creationDate" : "08-15-2017",
-//     "name" : "weekly exercice",
-//     "emailAlert" : "false"
-//   },
-//   {
-//     "id" : "0",
-//     "user_id" : "1",
-//     "number" : "3",
-//     "timeFrame" : "week",
-//     "creationDate" : "08-15-2017",
-//     "name" : "weekly exercice",
-//     "emailAlert" : "false"
-//   }
-// ]

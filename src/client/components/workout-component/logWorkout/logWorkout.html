@@ -2,19 +2,19 @@
   <div class="col-lg-6 mb-6 form">
     <form>
       <div class="form-group">
-        <label>Select Workout to Log</label>
+        <label>Workout to Log</label>
         <select ng-model="selectedWorkout" ng-options="workout.name for workout in workouts" class="form-control">
           <option value="{{workout}}"></option>
         </select>
       </div>
       <div ng-if="selectedWorkout">
         <div class="form-group">
-          <label>Enter Date</label>
+          <label>Date</label>
           <input ng-model="$ctrl.date" type="date" class="form-control"/>
         </div>
         <div class="form-group">
-          <label>Value</label>
-          <input ng-model="$ctrl.value" type="text" class="form-control" placeholder="Enter Value" />
+          <label>Number</label>
+          <input ng-model="$ctrl.value" type="text" class="form-control" placeholder="{{selectedWorkout.unitValue}}"/>
         </div>
         <label>Unit: {{selectedWorkout.unitName}}</label>
         </br>
