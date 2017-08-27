@@ -1,3 +1,5 @@
+// crane-fit modules
+const forecasting = require('../forecasting');
 const db = require('../db');
 const { User } = db // node LTS doesn't have object rest...
 
@@ -53,6 +55,8 @@ exports.post = {
 exports.get = {
   // This function seems not to be used
   users: function getUsers(req, res) {
+    db.retrieveUser(req.user.sub)
+      .then(user => forecasting.predictUserGoal(user, user.goals[0]))
     sendResults(db.retrieveUser(req.user.sub), res);
   },
   workouts: function getWorkouts(req, res) {
