@@ -1,19 +1,20 @@
 <div class="container">
   <h1 class="page-header">Goals</h1>
 
-  <!-- <button class="btn btn-default" type="button" ui-sref="panel"> Your panel activity</button> -->
   <button class="btn btn-default" type="button" ui-sref="panel"> Show My Progress </button>
   <button class="btn btn-default" type="button" ui-sref="addGoal"> Add Goal </button>
+    <form>
+      <div class="form-group">
+        <label>View progress for</label>
+        <select ng-model="selectedGoal" ng-options="goal.workoutName for goal in goals" class="form-control">
+          <option value="{{goal}}"></option>
+        </select>
+      </div>
+      <div ng-if="selectedGoal">
+        </br>
+        <button ng-click="$ctrl.handleClick()" type="submit" ui-sref="panel" class="btn btn-default">View Progress</button>
+      </div>
+    </form>
   <!-- <button class="btn btn-default" type="button" ui-sref="history"> See all my workouts</button> -->
   <ui-view></ui-view>
-
 </div>
-
-<!--  <ul >
-    <li> <h5> hereafter should be my ng-repeat result </h5></li>
-    <li ng-repeat="goal in $ctrl.resolveGoal">
-      <a ui-sref="goal({goalID:goal.id})">
-      {{goal.name}}
-      </a>
-    </li>
-  </ul> -->
