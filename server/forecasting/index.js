@@ -6,7 +6,7 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
   // Get user's workout history
   const dates = {};
   user.workouts.id(goal.workoutId).workoutHistory.forEach((log) => {
-    dates[moment(log.date).format('YYYY-MM-DD')] = log.number;
+    dates[moment(log.date).format('YYYY-MM-DD')] = log.number || NaN;
   });
   // Pad skipped days with NaN
   const startDate = moment(goal.startDate);
