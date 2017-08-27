@@ -18,7 +18,10 @@ def main():
     m.fit(df)
     future = m.make_future_dataframe(periods=period)
     forecast = m.predict(future)
-    print(json.dumps({'dates': [str(x) for x in forecast.ds.values], 'yhat': list(forecast.yhat.values)}))
+    print(json.dumps({
+      'dates': [str(x) for x in forecast.ds.values],
+      'yhat': list(forecast.yhat.values)
+    }))
 
 #start process
 if __name__ == '__main__':
