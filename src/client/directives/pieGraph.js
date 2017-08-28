@@ -7,7 +7,6 @@ angular.module('sparrowFit')
         data: "="
       },
       link: function(scope, element, attrs) {
-<<<<<<< HEAD
 
         scope.$watch('data', function() {
           var svg = d3.select('#chart').selectAll("*").remove()
@@ -60,56 +59,6 @@ angular.module('sparrowFit')
             //   scope.$apply();
             // };
         });
-=======
-        console.log('this is the piegraph', scope.data);
-        var exercises = scope.data;
-
-        var radius = 200;
-        var color = d3.scaleOrdinal()
-          .range(['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']);
-
-        var canvas = d3.select('#chart')
-          .append('svg')
-          .attr('width', '100%')
-          .attr('height', 500);
-
-        var group = canvas.append('g')
-          .attr('transform', 'translate(500, 250)');
-
-        var arc = d3.arc()
-          .innerRadius(0)
-          .outerRadius(radius);
-
-        var pie = d3.pie()
-          .value((d) => { return d.unitValue; }); //use unitValue as data value
-
-        var theArc = group.selectAll('.arc')
-          .data(pie(exercises))
-          .enter()
-          .append('g')
-          .attr('class', 'arc');
-
-        theArc.append('path')
-          .attr('d', arc)
-          .attr('fill', (d) => {
-            //fill in the rep data with color from range
-            return color (d.data.unitValue);
-          });
-
-        theArc.append('text')
-          .attr('transform', (d) => {
-            //take text and put it in center
-            return 'translate(' + arc.centroid(d) + ')';
-          })
-          .attr('dy', '0.15em')
-          .text((d) => {
-            return d.data.name;
-          });
-
-          window.onresize = function() {
-            scope.$apply();
-          };
->>>>>>> Edit size of graphs
       }
     }
   });
