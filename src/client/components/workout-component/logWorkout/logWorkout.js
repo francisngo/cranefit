@@ -1,23 +1,43 @@
+
 angular.module('sparrowFit')
-.controller('logWorkoutCtrl', function($scope, httpService) {
+.controller('logWorkoutCtrl', function($scope, $http) {
   $scope.workouts = {};
 
-  httpService.getData('/api/workouts', function(workouts) {
-    $scope.workouts = workouts;
-    $scope.selectedWorkout = $scope.workouts[0];
-  });
+  // make GET request to populate drop-down list
+  $http.get('/api/workouts')
+    .then(function(res) {
+      $scope.workouts = res.data;
+      $scope.selectedWorkout = $scope.workouts[0];
+    });
 
   this.workoutHistory = {};
 
   this.logWorkout = function() {
-    this.workoutHistory.date = this.date.valueOf();
+    if (this.date) {
+      // assign primitive value of specified date
+      this.workoutHistory.date = this.date.valueOf();
+    } else {
+      // show danger alert if date is not specified
+      $scope.onFailure = true;
+      return;
+    }
     this.workoutHistory.number = this.value;
 
-    alert('Workout Logged!');
     console.log('object to be sent to server: ', this.workoutHistory);
 
+    // reset alert
+    $scope.onSuccess = false;
+    $scope.onFailure = false;
+
     // make POST request to server
-    httpService.sendData(`/api/workouts/${$scope.selectedWorkout._id}/logs`, this.workoutHistory);
+    $http.post(`/api/workouts/${$scope.selectedWorkout._id}/logs`, this.workoutHistory)
+      .then(function(res) {
+        // on success, show success alert
+        $scope.onSuccess = res.data.name;
+      }, function() {
+        // on failure, show danger alert
+        $scope.onFailure = true;
+      });
   };
 })
 .component('logWorkout', {
