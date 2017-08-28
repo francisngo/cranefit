@@ -65,7 +65,7 @@ angular.module('sparrowFit')
             svg.append("circle")
                 .attr("cx", x(goal.date))
                 .attr("cy", y(goal.number))
-                .attr("r", 10)
+                .attr("r", 5)
                 .style("fill", "purple");
 
             // Add the X Axis
