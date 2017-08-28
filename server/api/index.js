@@ -71,7 +71,7 @@ exports.get = {
               goalDate: goal.endDate,
               goalNumber: goal.goalNumber,
               workoutName: name,
-              workoutHistory,
+              workoutHistory: workoutHistory.sort((a,b) => a.date - b.date),
               workoutPredictions: goal.workoutPredictions
             }
           }
