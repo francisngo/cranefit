@@ -19,8 +19,8 @@ def main():
     future = m.make_future_dataframe(periods=period)
     forecast = m.predict(future)
     print(json.dumps({
-      'dates': [str(x) for x in forecast.ds.values],
-      'yhat': list(forecast.yhat.values)
+      'ds': [str(x) for x in forecast.ds.values][-period:],
+      'yhat': list(forecast.yhat.values[-period:])
     }))
 
 #start process
