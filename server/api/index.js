@@ -41,6 +41,8 @@ exports.post = {
       db.retrieveUser(req.user.sub)
         .then(user => {
           index = user.workouts.id(workoutId).workoutHistory.push(body) - 1;
+          const workoutGoals = user.goals.filter(goal => goal.workoutId === workoutId);
+          workoutGoals.forEach(goal => forecasting.predictUserGoal(user, goal));
           return user.save();
         })
         .then(user => user.workouts.id(workoutId).workoutHistory[index])
@@ -55,8 +57,6 @@ exports.post = {
 exports.get = {
   // This function seems not to be used
   users: function getUsers(req, res) {
-    db.retrieveUser(req.user.sub)
-      .then(user => forecasting.predictUserGoal(user, user.goals[0]))
     sendResults(db.retrieveUser(req.user.sub), res);
   },
   workouts: function getWorkouts(req, res) {
@@ -71,7 +71,8 @@ exports.get = {
               goalDate: goal.endDate,
               goalNumber: goal.goalNumber,
               workoutName: name,
-              workoutHistory
+              workoutHistory,
+              workoutPredictions: goal.workoutPredictions
             }
           }
         ))

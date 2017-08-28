@@ -15,7 +15,6 @@ angular.module('sparrowFit')
     this.goal.workoutId = $scope.selectedWorkout._id;
     this.goal.goalNumber = Number(this.goalNumber);
     this.goal.startDate = Date.now().valueOf();
-<<<<<<< 32851ce210e1721bd739cac0895995ed3c8a35df
 
     if (this.goalEndDate) {
       // assign primitive value of specified date
@@ -41,10 +40,6 @@ angular.module('sparrowFit')
         // on failure, show danger alert
         $scope.onFailure = true;
       });
-=======
-    this.goal.endDate = this.goalEndDate.valueOf();
-    httpService.sendData('/api/goals', this.goal);
->>>>>>> Send goalNumber as number
   };
 })
 .component('addGoal', {
