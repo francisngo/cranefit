@@ -42,10 +42,11 @@ angular.module('sparrowFit')
           function draw(data, historyType, predictionType) {
             const logs = data[historyType];
             const futures = data[predictionType];
+            const goal = { date: new Date(scope.data.goalDate), number: scope.data.goalNumber};
 
             // Scale the range of the data
-            x.domain(d3.extent(logs.concat(futures), function(d) { return d.date; }));
-            y.domain([0, d3.max(logs.concat(futures), function(d) { return d.number; })]);
+            x.domain(d3.extent(logs.concat(futures).concat(goal), function(d) { return d.date; }));
+            y.domain([0, d3.max(logs.concat(futures).concat(goal), function(d) { return d.number; })]);
 
             // Add the X gridlines
             svg.append('g')
@@ -61,6 +62,11 @@ angular.module('sparrowFit')
                 .data([futures])
                 .attr("class", "future-line")
                 .attr("d", valueline);
+            svg.append("circle")
+                .attr("cx", x(goal.date))
+                .attr("cy", y(goal.number))
+                .attr("r", 10)
+                .style("fill", "purple");
 
             // Add the X Axis
             svg.append("g")
