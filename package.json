@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd src && npm install"
+    "postinstall": "pip install -r requirements.txt && cd src && npm install"
   },
   "repository": {
     "type": "git",
