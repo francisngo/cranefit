@@ -1,6 +1,5 @@
 angular.module('sparrowFit')
-.controller('WorkoutCtrl', function WorkoutCtrl(httpService, timerService, userDataService, store) {
-  this.timer = timerService;
+.controller('WorkoutCtrl', function WorkoutCtrl(httpService, userDataService, store) {
   this.userData = {};
   this.workoutData = '';
   this.workout = '';
