@@ -21,5 +21,11 @@
   <div class="col-lg-12 mb-12 border">
     <!-- <bar-graph data="$ctrl.barGraphData"></bar-graph> -->
     <line-graph data="selectedData"></line-graph>
+      <div ng-show="onSuccess" class="alert alert-success">
+        <strong>Congratulations!</strong> Looks like you're on track to meet your goal.
+      </div>
+      <div ng-show="onFailure" class="alert alert-danger">
+        <strong>Oh dear!</strong> Looks like you need to push a bit harder.
+      </div>
   </div>
 </div>

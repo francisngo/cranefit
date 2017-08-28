@@ -50,7 +50,7 @@ video {
 /* styles for line */
 .line {
   fill: none;
-  stroke: orange;
+  stroke: #FFC107;
   stroke-width: 3px;
 }
 
