@@ -19,6 +19,13 @@ angular.module('sparrowFit')
     this.handleViewProgressClick = function(e){
       console.log($scope.selectedGoal)
       $scope.selectedData = $scope.selectedGoal;
+      $scope.onFailure = true;
+      $scope.selectedData.workoutPredictions.forEach(prediction => {
+        if ($scope.onSuccess || prediction.number >= $scope.selectedData.goalNumber) {
+          $scope.onFailure = false;
+          $scope.onSuccess = true;
+        }
+      });
       this.showGraph = true;
     }
 
