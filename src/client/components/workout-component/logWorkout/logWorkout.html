@@ -18,7 +18,16 @@
         </div>
         <label>Unit: {{selectedWorkout.unitName}}</label>
         </br>
-        <button ng-click="$ctrl.logWorkout()" type="submit" class="btn btn-default">Log</button>
+        <div>
+          <button ng-click="$ctrl.logWorkout()" type="submit" class="btn btn-default">Log</button>
+        </div>
+        </br>
+        <div ng-show="onSuccess" class="alert alert-success">
+          <strong>Success!</strong> {{onSuccess}} workout successfully logged.
+        </div>
+        <div ng-show="onFailure" class="alert alert-danger">
+          <strong>Failure!</strong> Failed to log workout.
+        </div>
       </div>
     </form>
   </div>
