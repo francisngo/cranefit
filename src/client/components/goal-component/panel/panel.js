@@ -28,6 +28,9 @@ angular.module('sparrowFit')
         goal.workoutHistory.forEach(function(log) {
           log.date = new Date(log.date);
         });
+        goal.workoutPredictions.forEach(function(log) {
+          log.date = new Date(log.date);
+        });
       });
     }
 

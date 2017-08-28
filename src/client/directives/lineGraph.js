@@ -39,12 +39,13 @@ angular.module('sparrowFit')
             return d3.axisLeft(y).ticks(10);
           }
 
-          function draw(data, type) {
-            var data = data[type];
+          function draw(data, historyType, predictionType) {
+            const logs = data[historyType];
+            const futures = data[predictionType];
 
             // Scale the range of the data
-            x.domain(d3.extent(data, function(d) { return d.date; }));
-            y.domain([0, d3.max(data, function(d) { return d.number; })]);
+            x.domain(d3.extent(logs.concat(futures), function(d) { return d.date; }));
+            y.domain([0, d3.max(logs.concat(futures), function(d) { return d.number; })]);
 
             // Add the X gridlines
             svg.append('g')
@@ -53,8 +54,12 @@ angular.module('sparrowFit')
 
             // Add the valueline path.
             svg.append("path")
-                .data([data])
+                .data([logs])
                 .attr("class", "line")
+                .attr("d", valueline);
+            svg.append("path")
+                .data([futures])
+                .attr("class", "future-line")
                 .attr("d", valueline);
 
             // Add the X Axis
@@ -68,7 +73,7 @@ angular.module('sparrowFit')
           }
 
           // draw(workout, 'workoutHistory');
-          draw(lineData, 'workoutHistory');
+          draw(lineData, 'workoutHistory', 'workoutPredictions');
 
         });
       }
