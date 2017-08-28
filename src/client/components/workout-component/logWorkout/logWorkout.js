@@ -13,6 +13,10 @@ angular.module('sparrowFit')
     this.workoutHistory.date = this.date.valueOf();
     this.workoutHistory.number = this.value;
 
+    alert('Workout Logged!');
+    console.log('object to be sent to server: ', this.workoutHistory);
+
+    // make POST request to server
     httpService.sendData(`/api/workouts/${$scope.selectedWorkout._id}/logs`, this.workoutHistory);
   };
 })

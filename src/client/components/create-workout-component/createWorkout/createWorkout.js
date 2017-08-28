@@ -9,6 +9,7 @@ angular.module('sparrowFit')
     this.data.unitValue = this.unitValue;
     this.data.unitName = this.unitName;
 
+    alert('Workout Created!');
     console.log('object to be sent to server: ', this.data);
 
     // make POST request to server

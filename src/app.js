@@ -19,9 +19,9 @@ angular // add module dependencies and configure it
         controller: 'homeController as home'
       })
       .state('profile', {
+        name: 'profile',
         url: '/profile',
-        templateUrl: 'login/profile/profile-tpl.html',
-        controller: 'profileController as user'
+        component: 'profile'
       })
       .state('design', {
         url: '/design',
