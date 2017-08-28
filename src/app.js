@@ -35,16 +35,6 @@ angular // add module dependencies and configure it
         component: 'createWorkout',
       })
       .state({
-        name:'createWorkout.timed',
-        url: '/timed',
-        component: 'timed',
-      })
-      .state({
-        name: 'createWorkout.untimed',
-        url: '/untimed',
-        component: 'untimed'
-      })
-      .state({
         name: 'workout',
         url: '/workout',
         component: 'workout'
@@ -58,19 +48,6 @@ angular // add module dependencies and configure it
             var goals = goalService.getAllGoals();
             //console.log(goals);
             return goals;
-          }
-        }
-      })
-      .state({
-        name: 'goal',
-        url: '/{goalID}',
-        parent:'goalList',
-        component : 'goal',
-        resolve : {
-          resolveGoalItem : function (goalService,$transition$) {
-            var goalDetailAfterUSerClick= goalService.getGoal($transition$.params().goalID);
-            // console.log('in resolve goal, goalDetailAfterUSerClick = '+JSON.stringify(goalDetailAfterUSerClick));
-            return goalDetailAfterUSerClick;
           }
         }
       })
@@ -92,20 +69,6 @@ angular // add module dependencies and configure it
         }
       })
       .state({
-        name :'goalList',
-        url:'/goallist',
-        parent :'goals',
-        component :'goalList',
-        resolve : {
-          resolveGoalList : function (goalService) {
-            // move the content of golas/resolve func in here
-            var goals=goalService.getAllGoals();
-            //console.log( goals);
-            return goals;
-          }
-        }
-      })
-      .state({
         name:'logWorkout',
         url:'/log',
         parent:'workout',
@@ -116,17 +79,6 @@ angular // add module dependencies and configure it
         url:'/edit',
         parent:'workout',
         component:'editWorkout'
-      })
-      .state({
-        name :'history',
-        url:'/history',
-        parent :'goals',
-        component : 'history',
-        resolve : {
-          resolveHistory : function (goalService) {
-            return '!!!!! implement me !!!!!';
-          }
-        }
       });
 
 
