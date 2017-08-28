@@ -9,7 +9,7 @@ angular.module('sparrowFit')
       link: function(scope, element, attrs) {
         var barData = scope.data;
         var width = 1000;
-        var height = 500;
+        var height = 400;
 
         var scaling = d3.scaleLinear()
           .domain([0, 100]) //how big the area where data is

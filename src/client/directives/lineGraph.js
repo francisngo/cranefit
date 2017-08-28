@@ -15,7 +15,7 @@ angular.module('sparrowFit')
           var lineData = scope.data;
 
           var margin = { top: 20, right: 20, bottom: 30, left: 50 };
-          var width = 850 - margin.left - margin.right;
+          var width = 1080 - margin.left - margin.right;
           var height = 400 - margin.top - margin.bottom;
 
           var parseTime = d3.timeParse('%m-%d');
