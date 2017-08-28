@@ -50,8 +50,14 @@ video {
 /* styles for line */
 .line {
   fill: none;
-  stroke: steelblue;
-  stroke-width: 2px;
+  stroke: orange;
+  stroke-width: 3px;
+}
+
+.future-line {
+  fill: none;
+  stroke: #E91E63;
+  stroke-width: 3px;
 }
 
 .grid line {

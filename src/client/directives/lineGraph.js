@@ -57,6 +57,10 @@ angular.module('sparrowFit')
                 .data([logs])
                 .attr("class", "line")
                 .attr("d", valueline);
+            svg.append("path")
+                .data([futures])
+                .attr("class", "future-line")
+                .attr("d", valueline);
 
             // Add the X Axis
             svg.append("g")
