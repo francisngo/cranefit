@@ -17,6 +17,7 @@ angular.module('sparrowFit')
 
     // update selectedData
     this.handleViewProgressClick = function(e){
+      console.log($scope.selectedGoal)
       $scope.selectedData = $scope.selectedGoal;
       this.showGraph = true;
     }
@@ -25,11 +26,7 @@ angular.module('sparrowFit')
 
       goalsArray.forEach(function(goal) {
         goal.workoutHistory.forEach(function(log) {
-          var date = new Date(log.date)
-          var dateString = (date.getMonth() + 1) + '-' + (date.getDate());
-
-          //mutate date
-          log.date = dateString;
+          log.date = new Date(log.date);
         });
       });
     }
