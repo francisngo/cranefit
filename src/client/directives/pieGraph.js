@@ -12,7 +12,7 @@ angular.module('sparrowFit')
 
         var radius = 200;
         var color = d3.scaleOrdinal()
-          .range(['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']);
+          .range(['#673AB7', '#00BCD4', '#4CAF50', '#4CAF50', '#E91E63', '#FFEB3B', '#9E9E9E']);
 
         var canvas = d3.select('#chart')
           .append('svg')

@@ -6,13 +6,8 @@ angular.module('sparrowFit')
     this.workoutData = [10,10,40];
     this.testMessage = 'Hello World';
     this.workouts = [
-          {name: "fake 1", unitValue: 8},
-          {name: "fake 2", unitValue: 12}
-        ];
-
-    this.exercises = [
-          {name: "Pull Ups", unitValue: 8},
-          {name: "Deadlifts", unitValue: 12}
+          {name: "", unitValue: 30},
+          {name: "", unitValue: 20}
         ];
 
     httpService.getData('/api/workouts', function(workouts) {
