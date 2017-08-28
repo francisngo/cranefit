@@ -11,7 +11,6 @@ angular.module('sparrowFit')
         scope.$watch('data', function() {
           var svg = d3.select('#chart').selectAll("*").remove()
 
-          console.log('this is scope.data inside pie graph', scope.data);
           var exercises = scope.data;
 
           var radius = 200;
@@ -21,7 +20,7 @@ angular.module('sparrowFit')
           var canvas = d3.select('#chart')
             .append('svg')
             .attr('width', '100%')
-            .attr('height', 1000);
+            .attr('height', 600);
 
           var group = canvas.append('g')
             .attr('transform', 'translate(500, 350)');
