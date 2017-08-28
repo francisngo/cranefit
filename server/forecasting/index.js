@@ -10,7 +10,7 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
   // If not enough samples for any possible successful prediction, return
   const length = workoutHistory.length;
   if (length < 5) {
-    goal.workoutPredictions = false;
+    goal.workoutPredictions = [];
     user.save();
     return;
   }
@@ -42,8 +42,7 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
       user.save()
     })
     .catch(error => {
-      console.error(error);
-      goal.workoutPredictions = false;
+      goal.workoutPredictions = [];
       user.save();
     });
 }
