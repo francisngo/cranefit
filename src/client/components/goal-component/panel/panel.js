@@ -4,6 +4,7 @@ angular.module('sparrowFit')
     //this is only here to render bar graph
     this.workoutData = [10, 10, 10];
 
+    // ==== delete this after successfully grabbing selectedGoal data from database with getData ==== //
     //implement static data to line graph
     this.workoutLog = {
        "workoutName": "string",
@@ -78,8 +79,21 @@ angular.module('sparrowFit')
          }
        ]
     }
-
     // console.log('workout log: ', this.workoutLog);
+    // ============================================================================================== //
+
+    /*
+    NOTE:
+    Data is now displaying inside the panel.
+    Moved httpService from goals.js to panel.js.
+
+    TODO:
+    By default, its an empty graph
+    User select a goal from the "View progress for" drop down menu
+    User clicks "View Progress" button
+    Panel dynamically displays the selectGoal data in line graph
+    Follow this.workoutLog as an example of how to pull data
+    */
 
     $scope.goals = {};
 
@@ -87,7 +101,9 @@ angular.module('sparrowFit')
       // console.log('goals: ', goals);
       $scope.goals = goals;
       $scope.selectedGoal = $scope.goals[0];
-    })
+    });
+
+    console.log('$scope goals: ', $scope.goals);
 
     this.handleClick = function(e){
       console.log('button clicked');
