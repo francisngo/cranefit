@@ -14,9 +14,12 @@
     </form>
   </div>
 </div>
-<div class="row" style="padding-top: 15px; margin: 10px auto;">
+<!-- 
+  ng-show => show this div only if $ctrl.showProgress = true
+-->
+<div ng-show="$ctrl.showGraph" class="row" style="padding-top: 15px; margin: 10px auto;">
   <div class="col-lg-12 mb-12 border">
     <!-- <bar-graph data="$ctrl.barGraphData"></bar-graph> -->
-    <line-graph ng-show="$ctrl.showProgress" data="$ctrl.selectedData"></line-graph>
+    <line-graph data="selectedData"></line-graph>
   </div>
 </div>

@@ -24,8 +24,8 @@ angular.module('sparrowFit')
           var y = d3.scaleLinear().range([height, 0]);
 
           var valueline = d3.line()
-            .x(function(d) { return x(d.Date); })
-            .y(function(d) { return y(d.Number); });
+            .x(function(d) { return x(d.date); })
+            .y(function(d) { return y(d.number); });
 
           var svg = d3.select('#chart')
               .append('svg')
@@ -44,12 +44,12 @@ angular.module('sparrowFit')
 
             // format the data
             data.forEach(function(d) {
-                d.Date = parseTime(d.Date);
+                d.date = parseTime(d.date);
             });
 
             // Scale the range of the data
-            x.domain(d3.extent(data, function(d) { return d.Date; }));
-            y.domain([0, d3.max(data, function(d) { return d.Number; })]);
+            x.domain(d3.extent(data, function(d) { return d.date; }));
+            y.domain([0, d3.max(data, function(d) { return d.number; })]);
 
             // Add the X gridlines
             svg.append('g')
@@ -76,8 +76,6 @@ angular.module('sparrowFit')
           draw(lineData, 'workoutHistory');
 
         });
-
-
       }
     }
   });
