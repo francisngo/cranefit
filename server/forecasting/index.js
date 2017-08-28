@@ -10,7 +10,7 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
   // If not enough samples for any possible successful prediction, return
   const length = workoutHistory.length;
   if (length < 5) {
-    goal.predicted = false;
+    goal.workoutPredictions = false;
     user.save();
     return;
   }
@@ -33,7 +33,7 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
   };
   runProphet(dates, nums, difference)
     .then(({ ds, yhat }) => {
-      goal.predicted = ds.map((date, i) => {
+      goal.workoutPredictions = ds.map((date, i) => {
         return {
           date: new Date(date),
           number: yhat[i]
@@ -43,7 +43,7 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
     })
     .catch(error => {
       console.error(error);
-      goal.predicted = false;
+      goal.workoutPredictions = false;
       user.save();
     });
 }

@@ -71,7 +71,8 @@ exports.get = {
               goalDate: goal.endDate,
               goalNumber: goal.goalNumber,
               workoutName: name,
-              workoutHistory
+              workoutHistory,
+              workoutPredictions: goal.workoutPredictions
             }
           }
         ))

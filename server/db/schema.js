@@ -19,7 +19,7 @@ const goalSchema = new Schema({
   goalNumber: Number,
   startDate: Date,
   endDate: Date,
-  predicted: [workoutHistorySchema]
+  workoutPredictions: [workoutHistorySchema]
 });
 
 const workoutSchema = new Schema({
