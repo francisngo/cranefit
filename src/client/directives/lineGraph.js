@@ -7,8 +7,81 @@ angular.module('sparrowFit')
         data: '='
       },
       link: function(scope, element, attrs) {
-        // console.log('scope data:', scope.data);
-        var lineData = scope.data;
+
+        scope.$watch('data', function() {
+          //clear any existing markup inside chart div
+          var svg = d3.select('#chart').selectAll("*").remove()
+
+          var lineData = scope.data;
+
+          var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+          var width = 850 - margin.left - margin.right;
+          var height = 400 - margin.top - margin.bottom;
+
+          var parseTime = d3.timeParse('%m-%d');
+
+          var x = d3.scaleTime().range([0, width]);
+          var y = d3.scaleLinear().range([height, 0]);
+
+          var valueline = d3.line()
+            .x(function(d) { return x(d.Date); })
+            .y(function(d) { return y(d.Number); });
+
+          var svg = d3.select('#chart')
+              .append('svg')
+              .attr('width', width + margin.left + margin.right)
+              .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+              .attr('transform',
+                    'translate(' + margin.left + ',' + margin.top + ')');
+
+          function make_y_gridlines() {
+            return d3.axisLeft(y).ticks(10);
+          }
+
+          function draw(data, type) {
+            var data = data[type];
+
+            // format the data
+            data.forEach(function(d) {
+                d.Date = parseTime(d.Date);
+            });
+
+            // Scale the range of the data
+            x.domain(d3.extent(data, function(d) { return d.Date; }));
+            y.domain([0, d3.max(data, function(d) { return d.Number; })]);
+
+            // Add the X gridlines
+            svg.append('g')
+              .attr('class', 'grid')
+              .call(make_y_gridlines().tickSize(-width).tickFormat(''));
+
+            // Add the valueline path.
+            svg.append("path")
+                .data([data])
+                .attr("class", "line")
+                .attr("d", valueline);
+
+            // Add the X Axis
+            svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x));
+
+            // Add the Y Axis
+            svg.append("g")
+                .call(d3.axisLeft(y));
+          }
+
+          // draw(workout, 'workoutHistory');
+          draw(lineData, 'workoutHistory');
+
+        });
+
+
+      }
+    }
+  });
+
         // var lineData = {
         //    "workoutName": "string",
         // 	 "goalDate": "date",
@@ -83,69 +156,3 @@ angular.module('sparrowFit')
         //    ]
         // }
         // console.log('lineData: ', lineData);
-
-        var margin = { top: 20, right: 20, bottom: 30, left: 50 };
-        var width = 850 - margin.left - margin.right;
-        var height = 400 - margin.top - margin.bottom;
-
-        var parseTime = d3.timeParse('%m-%d');
-
-        var x = d3.scaleTime().range([0, width]);
-        var y = d3.scaleLinear().range([height, 0]);
-
-        var valueline = d3.line()
-          .x(function(d) { return x(d.Date); })
-          .y(function(d) { return y(d.Number); });
-
-        var svg = d3.select('#chart')
-            .append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-          .append('g')
-            .attr('transform',
-                  'translate(' + margin.left + ',' + margin.top + ')');
-
-        function make_y_gridlines() {
-          return d3.axisLeft(y).ticks(10);
-        }
-
-        function draw(data, type) {
-
-          var data = data[type];
-
-          // format the data
-          data.forEach(function(d) {
-              d.Date = parseTime(d.Date);
-          });
-
-          // Scale the range of the data
-          x.domain(d3.extent(data, function(d) { return d.Date; }));
-          y.domain([0, d3.max(data, function(d) { return d.Number; })]);
-
-          // Add the X gridlines
-          svg.append('g')
-            .attr('class', 'grid')
-            .call(make_y_gridlines().tickSize(-width).tickFormat(''));
-
-          // Add the valueline path.
-          svg.append("path")
-              .data([data])
-              .attr("class", "line")
-              .attr("d", valueline);
-
-          // Add the X Axis
-          svg.append("g")
-              .attr("transform", "translate(0," + height + ")")
-              .call(d3.axisBottom(x));
-
-          // Add the Y Axis
-          svg.append("g")
-              .call(d3.axisLeft(y));
-        }
-
-        // draw(workout, 'workoutHistory');
-        draw(lineData, 'workoutHistory');
-
-      }
-    }
-  });

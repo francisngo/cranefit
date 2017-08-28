@@ -9,14 +9,14 @@
       </div>
       <div ng-if="selectedGoal">
         <br/>
-        <button ng-click="$ctrl.handleClick()" type="submit" ui-sref="panel" class="btn btn-default">View Progress</button>
+        <button ng-click="$ctrl.handleViewProgressClick()" type="submit" ui-sref="panel" class="btn btn-default">View Progress</button>
       </div>
     </form>
   </div>
 </div>
 <div class="row" style="padding-top: 15px; margin: 10px auto;">
   <div class="col-lg-12 mb-12 border">
-    <!-- <bar-graph data="$ctrl.workoutData"></bar-graph> -->
-    <line-graph data="$ctrl.workoutLog"></line-graph>
+    <!-- <bar-graph data="$ctrl.barGraphData"></bar-graph> -->
+    <line-graph ng-show="$ctrl.showProgress" data="$ctrl.selectedData"></line-graph>
   </div>
 </div>
