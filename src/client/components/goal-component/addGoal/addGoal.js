@@ -15,6 +15,9 @@ angular.module('sparrowFit')
     this.goal.startDate = Date.now().valueOf();
     this.goal.endDate = this.goalEndDate.valueOf();
 
+    alert('Goal Added!');
+    console.log('object to be sent to server: ', this.goal);
+
     httpService.sendData('/api/goals', this.goal);
   };
 })

@@ -3,80 +3,86 @@ angular.module('sparrowFit')
     return {
       restrict: 'EA',
       template: '<div id="chart"></div>',
+      scope: {
+        data: '='
+      },
       link: function(scope, element, attrs) {
-        var workout = {
-           "workoutName": "string",
-        	 "goalDate": "date",
-        	 "goalNumber": "number",
-           "workout": [
-              {
-                 "Date": "08-01" ,
-                 "Number": 15
-              },
-              {
-                 "Date": "08-02",
-                 "Number": 20
-              },
-              {
-                 "Date": "08-04",
-                 "Number": 30
-              },
-              {
-                 "Date": "08-05",
-                 "Number": 45
-              },
-              {
-                 "Date": "08-06",
-                 "Number": 30
-              },
-              {
-                 "Date": "08-07" ,
-                 "Number": 15
-              },
-              {
-                 "Date": "08-08",
-                 "Number": 20
-              },
-              {
-                 "Date": "08-09",
-                 "Number": 50
-              },
-              {
-                 "Date": "08-10",
-                 "Number": 30
-              },
-              {
-                 "Date": "08-11",
-                 "Number": 45
-              },
-              {
-                 "Date": "08-12",
-                 "Number": 30
-              }
-           ],
-           "workoutPredictions": [
-             {
-                "Date": "08-13",
-                "Number": 20
-             },
-             {
-                "Date": "08-14",
-                "Number": 50
-             },
-             {
-                "Date": "08-15",
-                "Number": 30
-             },
-             {
-                "Date": "08-16",
-                "Number": 45
-             },
-             {
-                "Date": "08-17",
-                "Number": 30
-             }
-           ]
-        }
+        // console.log('scope data:', scope.data);
+        var lineData = scope.data;
+        // var lineData = {
+        //    "workoutName": "string",
+        // 	 "goalDate": "date",
+        // 	 "goalNumber": "number",
+        //    "workoutHistory": [
+        //       {
+        //          "Date": "08-01" ,
+        //          "Number": 15
+        //       },
+        //       {
+        //          "Date": "08-02",
+        //          "Number": 20
+        //       },
+        //       {
+        //          "Date": "08-04",
+        //          "Number": 30
+        //       },
+        //       {
+        //          "Date": "08-05",
+        //          "Number": 45
+        //       },
+        //       {
+        //          "Date": "08-06",
+        //          "Number": 30
+        //       },
+        //       {
+        //          "Date": "08-07" ,
+        //          "Number": 15
+        //       },
+        //       {
+        //          "Date": "08-08",
+        //          "Number": 20
+        //       },
+        //       {
+        //          "Date": "08-09",
+        //          "Number": 50
+        //       },
+        //       {
+        //          "Date": "08-10",
+        //          "Number": 30
+        //       },
+        //       {
+        //          "Date": "08-11",
+        //          "Number": 45
+        //       },
+        //       {
+        //          "Date": "08-12",
+        //          "Number": 30
+        //       }
+        //    ],
+        //    "workoutPredictions": [
+        //      {
+        //         "Date": "08-13",
+        //         "Number": 20
+        //      },
+        //      {
+        //         "Date": "08-14",
+        //         "Number": 50
+        //      },
+        //      {
+        //         "Date": "08-15",
+        //         "Number": 30
+        //      },
+        //      {
+        //         "Date": "08-16",
+        //         "Number": 45
+        //      },
+        //      {
+        //         "Date": "08-17",
+        //         "Number": 30
+        //      }
+        //    ]
+        // }
+        // console.log('lineData: ', lineData);
 
         var margin = { top: 20, right: 20, bottom: 30, left: 50 };
         var width = 850 - margin.left - margin.right;
@@ -137,14 +143,9 @@ angular.module('sparrowFit')
               .call(d3.axisLeft(y));
         }
 
-        draw(workout, 'workout');
+        // draw(workout, 'workoutHistory');
+        draw(lineData, 'workoutHistory');
 
-        // d3.json('../client-sample-data/workoutHistory.json', function(error, data) {
-        //   if(error) throw error;
-        //
-        //   draw(data, 'workout');
-        // });
       }
     }
   });
-
