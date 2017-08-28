@@ -1,17 +1,17 @@
 angular.module('sparrowFit')
-  .controller('profileController', function(store, httpService) {
+  .controller('profileController', function($scope, store, httpService) {
 
     this.profile = store.get('profile');
     this.joinedDate = this.profile.created_at.substring(0, 10);
     this.workoutData = [10,10,40];
     this.testMessage = 'Hello World';
-    this.workouts = [
-          {name: "", unitValue: 30},
-          {name: "", unitValue: 20}
+    $scope.workouts = [
+          {name: "", unitValue: 0},
+          {name: "", unitValue: 0}
         ];
 
     httpService.getData('/api/workouts', function(workouts) {
-      this.workouts = workouts;
+      $scope.workouts = workouts;
       console.log('profile controller called', this.workouts);
     });
   })

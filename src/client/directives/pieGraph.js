@@ -7,54 +7,59 @@ angular.module('sparrowFit')
         data: "="
       },
       link: function(scope, element, attrs) {
-        console.log('this is the piegraph', scope.data);
-        var exercises = scope.data;
 
-        var radius = 200;
-        var color = d3.scaleOrdinal()
-          .range(['#673AB7', '#00BCD4', '#4CAF50', '#4CAF50', '#E91E63', '#FFEB3B', '#9E9E9E']);
+        scope.$watch('data', function() {
+          var svg = d3.select('#chart').selectAll("*").remove()
 
-        var canvas = d3.select('#chart')
-          .append('svg')
-          .attr('width', '100%')
-          .attr('height', 1000);
+          console.log('this is scope.data inside pie graph', scope.data);
+          var exercises = scope.data;
 
-        var group = canvas.append('g')
-          .attr('transform', 'translate(500, 350)');
+          var radius = 200;
+          var color = d3.scaleOrdinal()
+            .range(['#673AB7', '#00BCD4', '#4CAF50', '#4CAF50', '#E91E63', '#FFEB3B', '#9E9E9E']);
 
-        var arc = d3.arc()
-          .innerRadius(0)
-          .outerRadius(radius);
+          var canvas = d3.select('#chart')
+            .append('svg')
+            .attr('width', '100%')
+            .attr('height', 1000);
 
-        var pie = d3.pie()
-          .value((d) => { return d.unitValue; }); //use unitValue as data value
+          var group = canvas.append('g')
+            .attr('transform', 'translate(500, 350)');
 
-        var theArc = group.selectAll('.arc')
-          .data(pie(exercises))
-          .enter()
-          .append('g')
-          .attr('class', 'arc');
+          var arc = d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius);
 
-        theArc.append('path')
-          .attr('d', arc)
-          .attr('fill', (d) => {
-            //fill in the rep data with color from range
-            return color (d.data.unitValue);
-          });
+          var pie = d3.pie()
+            .value((d) => { return d.unitValue; }); //use unitValue as data value
 
-        theArc.append('text')
-          .attr('transform', (d) => {
-            //take text and put it in center
-            return 'translate(' + arc.centroid(d) + ')';
-          })
-          .attr('dy', '0.15em')
-          .text((d) => {
-            return d.data.name;
-          });
+          var theArc = group.selectAll('.arc')
+            .data(pie(exercises))
+            .enter()
+            .append('g')
+            .attr('class', 'arc');
 
-          window.onresize = function() {
-            scope.$apply();
-          };
+          theArc.append('path')
+            .attr('d', arc)
+            .attr('fill', (d) => {
+              //fill in the rep data with color from range
+              return color (d.data.unitValue);
+            });
+
+          theArc.append('text')
+            .attr('transform', (d) => {
+              //take text and put it in center
+              return 'translate(' + arc.centroid(d) + ')';
+            })
+            .attr('dy', '0.15em')
+            .text((d) => {
+              return d.data.name;
+            });
+
+            // window.onresize = function() {
+            //   scope.$apply();
+            // };
+        });
       }
     }
   });
