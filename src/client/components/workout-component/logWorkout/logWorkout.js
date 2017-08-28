@@ -31,9 +31,9 @@ angular.module('sparrowFit')
 
     // make POST request to server
     $http.post(`/api/workouts/${$scope.selectedWorkout._id}/logs`, this.workoutHistory)
-      .then(function(res) {
+      .then(function() {
         // on success, show success alert
-        $scope.onSuccess = res.data.name;
+        $scope.onSuccess = true;
       }, function() {
         // on failure, show danger alert
         $scope.onFailure = true;
