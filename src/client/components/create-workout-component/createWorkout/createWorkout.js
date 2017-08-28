@@ -1,5 +1,5 @@
 angular.module('sparrowFit')
-.controller('CreateWorkoutCtrl', function(httpService, store) {
+.controller('CreateWorkoutCtrl', function($scope, $http, store) {
   // object to store data to be sent to sever
   this.data = {};
 
@@ -9,11 +9,21 @@ angular.module('sparrowFit')
     this.data.unitValue = this.unitValue;
     this.data.unitName = this.unitName;
 
-    alert('Workout Created!');
     console.log('object to be sent to server: ', this.data);
 
+    // reset alert
+    $scope.onSuccess = false;
+    $scope.onFailure = false;
+
     // make POST request to server
-    httpService.sendData('/api/workouts', this.data);
+    $http.post('/api/workouts', this.data)
+      .then(function(res) {
+        // on success, show success alert
+        $scope.onSuccess = res.data.name;
+      }, function() {
+        // on failure, show danger alert
+        $scope.onFailure = true;
+      })
   };
 })
 .component('createWorkout', {

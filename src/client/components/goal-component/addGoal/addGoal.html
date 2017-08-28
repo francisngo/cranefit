@@ -18,7 +18,18 @@
         </div>
         <label>Unit: {{selectedWorkout.unitName}}</label>
         </br>
-        <button ng-click="$ctrl.addGoal()" type="submit" class="btn btn-default">Add</button>
+        <div>
+          <button ng-click="$ctrl.addGoal()" type="submit" class="btn btn-default">Add</button>
+        </div>
+        </br>
+        <div>
+          <div ng-show="onSuccess" class="alert alert-success">
+            <strong>Success!</strong> Goal successfully added.
+          </div>
+          <div ng-show="onFailure" class="alert alert-danger">
+            <strong>Failure!</strong> Failed to add goal.
+          </div>
+        </div>
       </div>
     </form>
   </div>

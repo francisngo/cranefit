@@ -9,7 +9,16 @@
       <label>Unit</label>
       <input type="text" class="form-control" ng-model="$ctrl.unitName" placeholder="km/mi" />
     </div>
-    <button type="submit" class="btn btn-default" ng-click="$ctrl.addWorkout()">Create</button>
+    <div>
+      <button type="submit" class="btn btn-default" ng-click="$ctrl.addWorkout()">Create</button>
+    </div>
+    </br>
+    <div ng-show="onSuccess" class="alert alert-success">
+      <strong>Success!</strong> {{onSuccess}} workout successfully created.
+    </div>
+    <div ng-show="onFailure" class="alert alert-danger">
+      <strong>Failure!</strong> Failed to create workout.
+    </div>
   </div>
   <ui-view></ui-view>
 </div>
