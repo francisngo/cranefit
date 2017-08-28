@@ -20,6 +20,7 @@ angular.module('sparrowFit')
       console.log($scope.selectedGoal)
       $scope.selectedData = $scope.selectedGoal;
       $scope.onFailure = true;
+      $scope.onSuccess = false;
       $scope.selectedData.workoutPredictions.forEach(prediction => {
         if ($scope.onSuccess || prediction.number >= $scope.selectedData.goalNumber) {
           $scope.onFailure = false;
