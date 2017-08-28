@@ -32,8 +32,13 @@ exports.predictUserGoal = function predictUserGoal(user, goal) {
     difference = goalDate.diff(latest, 'day');
   };
   runProphet(dates, nums, difference)
-    .then(results => {
-      goal.predicted = results;
+    .then(({ ds, yhat }) => {
+      goal.predicted = ds.map((date, i) => {
+        return {
+          date: new Date(date),
+          number: yhat[i]
+        }
+      })
       user.save()
     })
     .catch(error => {

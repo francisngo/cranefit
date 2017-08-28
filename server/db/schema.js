@@ -9,17 +9,17 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 //CREATING THE SCHEMA
+const workoutHistorySchema = new Schema({
+  date: Date,
+  number: Number
+});
+
 const goalSchema = new Schema({
   workoutId: String,
   goalNumber: Number,
   startDate: Date,
   endDate: Date,
-  predicted: []
-});
-
-const workoutHistorySchema = new Schema({
-  date: Date,
-  number: Number
+  predicted: [workoutHistorySchema]
 });
 
 const workoutSchema = new Schema({
