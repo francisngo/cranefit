@@ -1,17 +1,34 @@
-# SparrowFit
+# Crane-Fit
 
 ## Introduction
 
-SparrowFit is a web based application that allows a user to create workout plans and use their created templates during their workout with a timer to help through each exercise.
+Crane-Fit is a web based application that allows a user to create workout plans and use their created templates during their workout with a timer to help through each exercise.
 
 # How to Use
 This will guide you through installing and opening the app, creating a workout and starting the workout assistant tool.
 
 ### Step One: Install Dependencies
+#### JavaScript and node
 First, run `npm install` from the root directory of this repository.
 This will install all requirements needed to run the core program.
 
 *note*: There is a package.json and bower.json in the src folder. Running `npm install` in the root directory will trigger a post install that will install all dependencies.
+
+#### Python
+##### fbprophet
+Crane-Fit depends on [fbprophet](https://github.com/facebookincubator/prophet) for its time-series forecasting. This is quite a new library which can perform relatively sophisticated analysis with simple parameters, highly accessible to the mathematically naive (such as ourselves). Being new, it has a couple of downsides: notably that it can be a little difficult to install.
+
+Installation __should__ be relatively painless with `pip`:
+```shell
+pip install fbprophet
+```
+
+Sometimes, however, it struggles to resolve all the dependencies correctly. In particular, you will need numpy>=1.10.0, which on certain platforms pip will not install by default. Crane-Fit is designed to be stable and should forecasting fail (e.g. if an older version of numpy is present), it will silently abandon forecasting. If you find you have no errors, but also no predictions, an old version of numpy or no installation fbprophet are likely the cause.
+
+Those struggling to resolve all the dependencies may find it easiest to use [Anaconda](https://www.anaconda.com/download/) which will provide a workable environment with a recent version of numpy and Cython installed. Running the above `pip install` from within a conda shell should make fbprophet available to you. __N.B__ In this case, you will also need to run `npm start` from within a conda shell to ensure that you use the correct Python distribution.
+
+##### Python version
+Crane-Fit is designed for Python 3.*, but there's not reason that it shouldn't work on 2.7.
 
 ### Step Two: Start the Server
 Next, run `npm start`, which will start the server on `localhost:3002`
@@ -47,10 +64,10 @@ This will display the details of the workout. Click the `Add Data to Timer` butt
 Lastly, click `Start` to begin the timer which will run through the created workout.
 
 # Program Structure
-SparrowFit is built using the MEAN stack along with some help for Auth0, FlipClock.JS and Bootstrap.
+Crane-Fit is built using the MEAN stack along with some help for Auth0, FlipClock.JS and Bootstrap.
 
 ## The Database
-SparrowFit's Mongo Database uses Mongoose as an orm. It's code is built in the `db` folder containing two files.
+Crane-Fit's Mongo Database uses Mongoose as an orm. It's code is built in the `db` folder containing two files.
 First, mongoose-schemas.js creates schemas for four different Database tables.
 
 *User* stores information on individual users to the app.
