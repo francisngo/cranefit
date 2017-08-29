@@ -1,22 +1,22 @@
 {
-  "name": "sparrow",
+  "name": "crane-fit",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "start": "nodemon server/index.js",
     "postinstall": "bower install ./src/bower.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ankit09osr/sparrow.git"
+    "url": "git+https://github.com/cranebaes/sparrow.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ankit09osr/sparrow/issues"
+    "url": "https://github.com/cranebaes/sparrow/issues"
   },
-  "homepage": "https://github.com/Ankit09osr/sparrow#readme",
+  "homepage": "https://github.com/cranebaes/sparrow#readme",
   "dependencies": {
     "angular": "^1.6.5",
     "body-parser": "^1.17.2",
