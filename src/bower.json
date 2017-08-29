@@ -1,12 +1,9 @@
 {
   "name": "timer",
   "main": "timer.js",
-  "homepage": "https://github.com/nickhattwick/sparrow",
-  "authors": [
-    "Nick <nhattwick@gmail.com>"
-  ],
+  "homepage": "https://github.com/cranebaes/sparrow/issues",
   "description": "",
-  "license": "MIT",
+  "license": "ISC",
   "private": true,
   "dependencies": {
     "angular": "^1.6.5",
