@@ -75,11 +75,9 @@ First, mongoose-schemas.js creates schemas for four different Database tables.
 */db* also contains *seed.js* which clears and adds fake data to the database when run.
 Running `node db/seed.js` will drop and repopulate the database.
 
-We have used mLab for our cloud database system.
-Checkout .env.example and fill in the following sections to get it running.
-`MONGO_SERVER =`
-`MONGO_USERNAME =`
-`MONGO_PASSWORD =`
+We have used mLab for our cloud database system which makes the following environment variable automagically available to node when working with some platforms (Such as Heroku):
+`MONGO_DB_URI =`
+If you are npt using such a platform (or perhaps working locally), you should set this variable manually to `mongodb://<username>:<password>@<host>:<port>/<db_name>`.
 
 ## The Server
 The server's code is stored in */server/index.js*, which creates an Express server
