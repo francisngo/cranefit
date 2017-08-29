@@ -46,27 +46,17 @@ Note: DOMAIN and CLIENT_ID are passed from server to client via get request in *
 
 ### Step Four: Create Your First Workout
 After logging in, a new bar should display in the top left corner.
-Click on `Create Workout` and then `Create Timed Workout` to get to the Create Workout Component page.
+Click on `Create Workout` to get to the Create Workout page. Here, you can set a new workout with a name, default value for logging your workouts and unit by which to measure them.
 
-The Create Workout Component page has two section. Fill out the Template Name to name your workout,
-Then, you can add individual exercises by filling out a name, duration and the a break time between exercises.
+You can log individual workouts in the `Log Workouts` section which saves records of individual sessions.
 
-Ex. Name: `Pushups`, Duration: `1 minute 30 seconds`, Break: `45` would be one exercise of a Workout.
-Click the `Add Exercise` button to add an exercise to the workout template.
-Once you have all of the exercises you want in the template, click the `Add Template` button.
-
-### Using Your Workout
-From here, click on the `Workout` tab to the right of `Create Workout`.
-On the Workout page, select a previously created template by either typing its name into the text field
-or by clicking on Timed or Untimed Workout buttons and clicking on a workout the button displays.
-This will display the details of the workout. Click the `Add Data to Timer` button to create a timer.
-Lastly, click `Start` to begin the timer which will run through the created workout.
+Finally, you can set a goal (perhaps you want to run a faster mile or squat a few extra kg) and track your progress in the `Goals` section. After a few workouts, you will start to see predictions of future performance and a notification of your likelihood of meeting your goal. These become more accurate the more information you give them, so remember to log every workout!
 
 # Program Structure
 Crane-Fit is built using the MEAN stack along with some help for Auth0 and Bootstrap.
 
 ## The Database
-Crane-Fit's Mongo Database uses Mongoose as an orm. It's code is built in the `db` folder containing two files.
+Crane-Fit's Mongo Database uses Mongoose as an ORM. It's code is built in the `db` folder containing two files.
 First, mongoose-schemas.js creates schemas for four different Database tables.
 
 *User* stores information on individual users to the app.
@@ -79,7 +69,7 @@ Running `node db/seed.js` will drop and repopulate the database.
 
 We have used mLab for our cloud database system which makes the following environment variable automagically available to node when working with some platforms (Such as Heroku):
 `MONGO_DB_URI =`
-If you are npt using such a platform (or perhaps working locally), you should set this variable manually to `mongodb://<username>:<password>@<host>:<port>/<db_name>`.
+If you are not using such a platform (or perhaps working locally), you should set this variable manually to `mongodb://<username>:<password>@<host>:<port>/<db_name>`.
 
 ## The Server
 The server's code is stored in */server/index.js*, which creates an Express server
