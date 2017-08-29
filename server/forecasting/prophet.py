@@ -13,8 +13,7 @@ def main():
 
     [dates, nums, period] = read_in()
     df = pd.DataFrame({'ds': dates, 'y': nums})
-    m = Prophet(weekly_seasonality=False, yearly_seasonality=False)
-    # m = Prophet()
+    m = Prophet()
     m.fit(df)
     future = m.make_future_dataframe(periods=period)
     forecast = m.predict(future)
@@ -23,6 +22,7 @@ def main():
       'yhat': list(forecast.yhat.values[-period:])
     }))
 
-#start process
+# Start process
 if __name__ == '__main__':
     main()
+    
