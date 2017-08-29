@@ -9,10 +9,7 @@ This will guide you through installing and opening the app, creating a workout a
 
 ### Step One: Install Dependencies
 #### JavaScript and node
-First, run `npm install` from the root directory of this repository.
-This will install all requirements needed to run the core program.
-
-*note*: There is a package.json and bower.json in the src folder. Running `npm install` in the root directory will trigger a post install that will install all dependencies.
+Running `npm install` from the root directory should satisfy all dependencies. __N.B.__ You will need bower installed (`npm install -g bower`) for this to work correctly.
 
 #### Python
 ##### fbprophet
