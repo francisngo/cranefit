@@ -61,7 +61,7 @@ This will display the details of the workout. Click the `Add Data to Timer` butt
 Lastly, click `Start` to begin the timer which will run through the created workout.
 
 # Program Structure
-Crane-Fit is built using the MEAN stack along with some help for Auth0, FlipClock.JS and Bootstrap.
+Crane-Fit is built using the MEAN stack along with some help for Auth0 and Bootstrap.
 
 ## The Database
 Crane-Fit's Mongo Database uses Mongoose as an orm. It's code is built in the `db` folder containing two files.
