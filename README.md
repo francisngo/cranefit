@@ -4,7 +4,7 @@
 
 Crane-Fit is a web based application that allows a user to create workout plans and use their created templates during their workout with a timer to help through each exercise.
 
-Crane0Fit is forked (with gratitude) from _Team Sparrow's__ [Sparrow Fit](https://github.com/TeamSparrows/sparrow). The unique features of Crane-Fit are time series forecasting (with fbprophet) and data visualization (with D3).
+Crane0Fit is forked (with gratitude) from _Team Sparrow's_ [Sparrow Fit](https://github.com/TeamSparrows/sparrow). The unique features of Crane-Fit are time series forecasting (with fbprophet) and data visualization (with D3).
 
 # How to Use
 This will guide you through installing and opening the app, creating a workout and starting the workout assistant tool.
