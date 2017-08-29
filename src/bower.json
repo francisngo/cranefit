@@ -3,7 +3,7 @@
   "main": "timer.js",
   "homepage": "https://github.com/cranebaes/sparrow/issues",
   "description": "",
-  "license": "MIT",
+  "license": "ISC",
   "private": true,
   "dependencies": {
     "angular": "^1.6.5",
