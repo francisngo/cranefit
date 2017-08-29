@@ -42,14 +42,7 @@ angular // add module dependencies and configure it
       .state({
         name: 'goals',
         url:'/goals',
-        component: 'goals',
-        resolve : {
-          resolveGoal : function (goalService) {
-            var goals = goalService.getAllGoals();
-            //console.log(goals);
-            return goals;
-          }
-        }
+        component: 'goals'
       })
       .state({
         name :'addGoal',
@@ -62,11 +55,6 @@ angular // add module dependencies and configure it
         url:'/panel',
         parent :'goals',
         component : 'panel',
-        resolve : {
-          resolvePanel : function (goalService) {
-            return '!!!!! implement me !!!!!';
-          }
-        }
       })
       .state({
         name:'logWorkout',
