@@ -23,8 +23,6 @@ angular.module('sparrowFit')
     }
     this.workoutHistory.number = this.value;
 
-    console.log('object to be sent to server: ', this.workoutHistory);
-
     // reset alert
     $scope.onSuccess = false;
     $scope.onFailure = false;

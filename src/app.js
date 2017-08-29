@@ -35,16 +35,6 @@ angular // add module dependencies and configure it
         component: 'createWorkout',
       })
       .state({
-        name:'createWorkout.timed',
-        url: '/timed',
-        component: 'timed',
-      })
-      .state({
-        name: 'createWorkout.untimed',
-        url: '/untimed',
-        component: 'untimed'
-      })
-      .state({
         name: 'workout',
         url: '/workout',
         component: 'workout'
@@ -52,27 +42,7 @@ angular // add module dependencies and configure it
       .state({
         name: 'goals',
         url:'/goals',
-        component: 'goals',
-        resolve : {
-          resolveGoal : function (goalService) {
-            var goals = goalService.getAllGoals();
-            //console.log(goals);
-            return goals;
-          }
-        }
-      })
-      .state({
-        name: 'goal',
-        url: '/{goalID}',
-        parent:'goalList',
-        component : 'goal',
-        resolve : {
-          resolveGoalItem : function (goalService,$transition$) {
-            var goalDetailAfterUSerClick= goalService.getGoal($transition$.params().goalID);
-            // console.log('in resolve goal, goalDetailAfterUSerClick = '+JSON.stringify(goalDetailAfterUSerClick));
-            return goalDetailAfterUSerClick;
-          }
-        }
+        component: 'goals'
       })
       .state({
         name :'addGoal',
@@ -85,25 +55,6 @@ angular // add module dependencies and configure it
         url:'/panel',
         parent :'goals',
         component : 'panel',
-        resolve : {
-          resolvePanel : function (goalService) {
-            return '!!!!! implement me !!!!!';
-          }
-        }
-      })
-      .state({
-        name :'goalList',
-        url:'/goallist',
-        parent :'goals',
-        component :'goalList',
-        resolve : {
-          resolveGoalList : function (goalService) {
-            // move the content of golas/resolve func in here
-            var goals=goalService.getAllGoals();
-            //console.log( goals);
-            return goals;
-          }
-        }
       })
       .state({
         name:'logWorkout',
@@ -116,17 +67,6 @@ angular // add module dependencies and configure it
         url:'/edit',
         parent:'workout',
         component:'editWorkout'
-      })
-      .state({
-        name :'history',
-        url:'/history',
-        parent :'goals',
-        component : 'history',
-        resolve : {
-          resolveHistory : function (goalService) {
-            return '!!!!! implement me !!!!!';
-          }
-        }
       });
 
 
