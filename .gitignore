@@ -1,6 +1,5 @@
 node_modules
-src/client/timer/bower_components
-src/bower_components/
+src/lib/*
 .env
 .DS_Store
-client/timer/bower_components
+*.log

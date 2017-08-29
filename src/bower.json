@@ -9,6 +9,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "flipclock": "^0.7.7"
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-aria": "^1.6.5",
+    "angular-jwt": "^0.1.9",
+    "angular-material": "^1.1.4",
+    "angular-messages": "^1.6.5",
+    "a0-angular-storage": "^0.0.15",
+    "angular-ui-router": "^1.0.3",
+    "auth0-angular": "^4.2.7"
   }
 }
