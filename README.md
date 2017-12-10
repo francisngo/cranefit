@@ -14,12 +14,12 @@
 
 ## Table of Contents
 
-1. [Getting Started](#getting-started)
-  1. [Step One: Install Dependencies](#step-one-install-dependencies)
-  1. [Step Two: Start The Server](#step-two-start-the-server)
-  1. [Step Three: Authenticate](#step-three-authenticate)
-  1. [Step Four: Creating Your First Workout](#step-four-creating-your-first-workout)
-1. [Program Structure](#program-structure)
+* [Getting Started](#getting-started)
+  * [Step One: Install Dependencies](#step-one-install-dependencies)
+  * [Step Two: Start The Server](#step-two-start-the-server)
+  * [Step Three: Authenticate](#step-three-authenticate)
+  * [Step Four: Creating Your First Workout](#step-four-creating-your-first-workout)
+* [Program Structure](#program-structure)
   * [The Database](#the-database)
   * [The Server](#the-server)
   * [The Client](#the-client)
