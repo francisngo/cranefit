@@ -4,7 +4,7 @@
 
 > Crane Fit is forked (with gratitude) from _Team Sparrow's_ [Sparrow Fit](https://github.com/TeamSparrows/sparrow). The unique features of Crane Fit are time series forecasting (with fbprophet) and data visualization (with D3).
 
-* [Deployed Application Link](https://Crane Fit.herokuapp.com)
+* [Deployed Application Link](https://crane-fit.herokuapp.com)
 
 ## Team
 
@@ -16,17 +16,17 @@
 
 1. [Getting Started](#getting-started)
   1. [Step One: Install Dependencies](#step-one-install-dependencies)
-    1. [JavaScript and node](#javascript-and-node)
-    1. [Python](#python)
-      1. [fbprophet](#fbprophet)
-      1. [Python version](#python-version)
+    * [JavaScript and node](#javascript-and-node)
+    * [Python](#python)
+    * [fbprophet](#fbprophet)
+    * [Python version](#python-version)
   1. [Step Two: Start The Server](#step-two-start-the-server)
   1. [Step Three: Authenticate](#step-three-authenticate)
   1. [Step Four: Authenticate](#step-four-creating-your-first-workout)
 1. [Program Structure](#program-structure)
-  1. [The Database](#the-database)
-  1. [The Server](#the-server)
-  1. [The Client](#the-client)
+  * [The Database](#the-database)
+  * [The Server](#the-server)
+  * [The Client](#the-client)
 
 
 # Getting Started
