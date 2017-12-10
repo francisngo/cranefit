@@ -1,33 +1,56 @@
-# Crane-Fit
+# Crane Fit
 
-## Introduction
+> Crane Fit is a web based application that allows a user to create workout plans and use their created templates during their workout with a timer to help through each exercise.
 
-Crane-Fit is a web based application that allows a user to create workout plans and use their created templates during their workout with a timer to help through each exercise.
+> Crane Fit is forked (with gratitude) from _Team Sparrow's_ [Sparrow Fit](https://github.com/TeamSparrows/sparrow). The unique features of Crane Fit are time series forecasting (with fbprophet) and data visualization (with D3).
 
-Crane0Fit is forked (with gratitude) from _Team Sparrow's_ [Sparrow Fit](https://github.com/TeamSparrows/sparrow). The unique features of Crane-Fit are time series forecasting (with fbprophet) and data visualization (with D3).
+* [Deployed Application Link](https://Crane Fit.herokuapp.com)
 
-# How to Use
+## Team
+
+  - __Product Owner__: Shaikat Haque
+  - __Scrum Master__: Francis Ngo
+  - __Development Team Members__: Peter Warner-Medley, Brian Kim
+
+## Table of Contents
+
+1. [Getting Started](#getting-started)
+  1. [Step One: Install Dependencies](#step-one-install-dependencies)
+    1. [JavaScript and node](#javascript-and-node)
+    1. [Python](#python)
+      1. [fbprophet](#fbprophet)
+      1. [Python version](#python-version)
+  1. [Step Two: Start The Server](#step-two-start-the-server)
+  1. [Step Three: Authenticate](#step-three-authenticate)
+  1. [Step Four: Authenticate](#step-four-creating-your-first-workout)
+1. [Program Structure](#program-structure)
+  1. [The Database](#the-database)
+  1. [The Server](#the-server)
+  1. [The Client](#the-client)
+
+
+# Getting Started
 This will guide you through installing and opening the app, creating a workout and starting the workout assistant tool.
 
-### Step One: Install Dependencies
-#### JavaScript and node
+## Step One: Install Dependencies
+### JavaScript and Node
 Running `npm install` from the root directory should satisfy all dependencies. __N.B.__ You will need bower installed (`npm install -g bower`) for this to work correctly.
 
-#### Python
-##### fbprophet
-Crane-Fit depends on [fbprophet](https://github.com/facebookincubator/prophet) for its time-series forecasting. This is quite a new library which can perform relatively sophisticated analysis with simple parameters, highly accessible to the mathematically naive (such as ourselves). Being new, it has a couple of downsides: notably that it can be a little difficult to install.
+### Python
+#### fbprophet
+Crane Fit depends on [fbprophet](https://github.com/facebookincubator/prophet) for its time-series forecasting. This is quite a new library which can perform relatively sophisticated analysis with simple parameters, highly accessible to the mathematically naive (such as ourselves). Being new, it has a couple of downsides: notably that it can be a little difficult to install.
 
 Installation __should__ be relatively painless with `pip`:
 ```shell
 pip install fbprophet
 ```
 
-Sometimes, however, it struggles to resolve all the dependencies correctly. In particular, you will need numpy>=1.10.0, which on certain platforms pip will not install by default. Crane-Fit is designed to be stable and should forecasting fail (e.g. if an older version of numpy is present), it will silently abandon forecasting. If you find you have no errors, but also no predictions, an old version of numpy or no installation fbprophet are likely the cause.
+Sometimes, however, it struggles to resolve all the dependencies correctly. In particular, you will need numpy>=1.10.0, which on certain platforms pip will not install by default. Crane Fit is designed to be stable and should forecasting fail (e.g. if an older version of numpy is present), it will silently abandon forecasting. If you find you have no errors, but also no predictions, an old version of numpy or no installation fbprophet are likely the cause.
 
 Those struggling to resolve all the dependencies may find it easiest to use [Anaconda](https://www.anaconda.com/download/) which will provide a workable environment with a recent version of numpy and Cython installed. Running the above `pip install` from within a conda shell should make fbprophet available to you. __N.B__ In this case, you will also need to run `npm start` from within a conda shell to ensure that you use the correct Python distribution.
 
-##### Python version
-Crane-Fit is designed for Python 3.*, but there's not reason that it shouldn't work on 2.7.
+#### Python version
+Crane Fit is designed for Python 3.^, but there's not reason that it shouldn't work on 2.7.
 
 ### Step Two: Start the Server
 Next, run `npm start`, which will start the server on `localhost:3002`
@@ -44,7 +67,7 @@ Checkout the .env.example file and fill in the following sections to get it runn
 
 Note: DOMAIN and CLIENT_ID are passed from server to client via get request in *src/app.js*.
 
-### Step Four: Create Your First Workout
+### Step Four: Creating Your First Workout
 After logging in, a new bar should display in the top left corner.
 Click on `Create Workout` to get to the Create Workout page. Here, you can set a new workout with a name, default value for logging your workouts and unit by which to measure them.
 
@@ -53,10 +76,10 @@ You can log individual workouts in the `Log Workouts` section which saves record
 Finally, you can set a goal (perhaps you want to run a faster mile or squat a few extra kg) and track your progress in the `Goals` section. After a few workouts, you will start to see predictions of future performance and a notification of your likelihood of meeting your goal. These become more accurate the more information you give them, so remember to log every workout!
 
 # Program Structure
-Crane-Fit is built using the MEAN stack along with some help for Auth0 and Bootstrap.
+Crane Fit is built using the MEAN stack along with some help for Auth0 and Bootstrap.
 
 ## The Database
-Crane-Fit's Mongo Database uses Mongoose as an ORM. It's code is built in the `db` folder containing two files.
+Crane Fit's Mongo Database uses Mongoose as an ORM. It's code is built in the `db` folder containing two files.
 First, mongoose-schemas.js creates schemas for four different Database tables.
 
 *User* stores information on individual users to the app.
@@ -87,3 +110,7 @@ Along with more modularized folders, */src* contains *index.html*, which is the 
 Inside of */src/client*, */components* contains the different aspects for the program, creating the view and code to create workouts, goals, and load and navigating through a workout. Each of these is taken care in its corresponding folder.
 
 The other folder inside of client is *services*, which contains Angular services used throughout the program.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
