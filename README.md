@@ -23,17 +23,21 @@
   * [The Database](#the-database)
   * [The Server](#the-server)
   * [The Client](#the-client)
+* [Contributing](#contributing)
 
 
 # Getting Started
 This will guide you through installing and opening the app, creating a workout and starting the workout assistant tool.
 
 ## Step One: Install Dependencies
+
 ### JavaScript and Node
 Running `npm install` from the root directory should satisfy all dependencies. __N.B.__ You will need bower installed (`npm install -g bower`) for this to work correctly.
 
-### Python
-#### fbprophet
+### Python version
+Crane Fit is designed for Python 3.^, but there's not reason that it shouldn't work on 2.7.
+
+### fbprophet
 Crane Fit depends on [fbprophet](https://github.com/facebookincubator/prophet) for its time-series forecasting. This is quite a new library which can perform relatively sophisticated analysis with simple parameters, highly accessible to the mathematically naive (such as ourselves). Being new, it has a couple of downsides: notably that it can be a little difficult to install.
 
 Installation __should__ be relatively painless with `pip`:
@@ -45,13 +49,10 @@ Sometimes, however, it struggles to resolve all the dependencies correctly. In p
 
 Those struggling to resolve all the dependencies may find it easiest to use [Anaconda](https://www.anaconda.com/download/) which will provide a workable environment with a recent version of numpy and Cython installed. Running the above `pip install` from within a conda shell should make fbprophet available to you. __N.B__ In this case, you will also need to run `npm start` from within a conda shell to ensure that you use the correct Python distribution.
 
-#### Python version
-Crane Fit is designed for Python 3.^, but there's not reason that it shouldn't work on 2.7.
-
-### Step Two: Start the Server
+## Step Two: Start the Server
 Next, run `npm start`, which will start the server on `localhost:3002`
 
-### Step Three: Authenticate
+## Step Three: Authenticate
 Our authentication system uses Auth0. Sign up for an account with Auth0 and create a client with which you will have access to a clientID (Auth0's way of idenfiying you) and domain. These will have to be added to the .env file as environment variables.
 
 You can list the callback url in your Auth0 settings.
@@ -63,7 +64,7 @@ Checkout the .env.example file and fill in the following sections to get it runn
 
 Note: DOMAIN and CLIENT_ID are passed from server to client via get request in *src/app.js*.
 
-### Step Four: Creating Your First Workout
+## Step Four: Creating Your First Workout
 After logging in, a new bar should display in the top left corner.
 Click on `Create Workout` to get to the Create Workout page. Here, you can set a new workout with a name, default value for logging your workouts and unit by which to measure them.
 
@@ -107,6 +108,6 @@ Inside of */src/client*, */components* contains the different aspects for the pr
 
 The other folder inside of client is *services*, which contains Angular services used throughout the program.
 
-## Contributing
+# Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
